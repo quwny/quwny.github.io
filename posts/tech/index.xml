@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>技术 on QuwnyBlog</title>
+    <link>/posts/tech/</link>
+    <description>Recent content in 技术 on QuwnyBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 30 Apr 2022 16:22:44 +0800</lastBuildDate><atom:link href="/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java中的Lambda表达式</title>
+      <link>/posts/tech/java%E4%B8%AD%E7%9A%84lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <pubDate>Sat, 30 Apr 2022 16:22:44 +0800</pubDate>
+      
+      <guid>/posts/tech/java%E4%B8%AD%E7%9A%84lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <description>学习笔记：介绍 Java 中的 Lambda 表达式</description>
+    </item>
+    
+    <item>
+      <title>LeetCode 每日一题</title>
+      <link>/posts/tech/leetcode-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</link>
+      <pubDate>Thu, 28 Apr 2022 15:57:58 +0800</pubDate>
+      
+      <guid>/posts/tech/leetcode-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</guid>
+      <description>LeetCode 每日一题</description>
+    </item>
+    
+  </channel>
+</rss>
