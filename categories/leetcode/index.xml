@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>LeetCode on QuwnyBlog</title>
-    <link>/categories/leetcode/</link>
+    <link>https://codeqwy.github.io/categories/leetcode/</link>
     <description>Recent content in LeetCode on QuwnyBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 28 Apr 2022 15:57:58 +0800</lastBuildDate><atom:link href="/categories/leetcode/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Apr 2022 15:57:58 +0800</lastBuildDate><atom:link href="https://codeqwy.github.io/categories/leetcode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LeetCode 每日一题</title>
-      <link>/posts/tech/leetcode-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</link>
+      <link>https://codeqwy.github.io/posts/tech/leetcode-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</link>
       <pubDate>Thu, 28 Apr 2022 15:57:58 +0800</pubDate>
       
-      <guid>/posts/tech/leetcode-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</guid>
+      <guid>https://codeqwy.github.io/posts/tech/leetcode-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</guid>
       <description>LeetCode 每日一题</description>
     </item>
     

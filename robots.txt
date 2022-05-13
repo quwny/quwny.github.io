@@ -1,3 +1,3 @@
 User-agent: *
 Disallow:
-Sitemap: sitemap.xml
+Sitemap: https://codeqwy.github.io/sitemap.xml
