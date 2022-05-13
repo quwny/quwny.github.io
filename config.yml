@@ -1,4 +1,4 @@
-# baseURL: https://www.*****.cn  #绑定的域名
+baseURL: https://codeqwy.github.io/  #绑定的域名
 languageCode: zh-cn # en-us
 title: QuwnyBlog
 theme: PaperMod # 主题名字，和themes文件夹下的一致
