@@ -1,7 +1,7 @@
 ---
 title: "LeetCode 每日一题"
 date: 2022-04-28T15:57:58+08:00
-lastmod: 2022-05-09
+lastmod: 2022-05-12
 categories: 
 - LeetCode
 tags: 
@@ -9,6 +9,191 @@ tags:
 description: "LeetCode 每日一题"
 draft: false
 ---
+
+## [944. 删列造序](https://leetcode.cn/problems/delete-columns-to-make-sorted/)
+
+`tag: 字符串、排序`
+
+```java
+/**
+ * 解题思路：按列比较是否是升序的。
+ */
+class Solution {
+    public int minDeletionSize(String[] strs) {
+        // 字符串个数
+        int m = strs.length;
+        // 字符串长度
+        int n = strs[0].length();
+        // 存储结果
+        int result = 0;
+        // 遍历字符串
+        for (int i = 0; i < n; ++i) {
+            // 按列遍历
+            // 第一列的第 i 个字符
+            char pre = strs[0].charAt(i);
+            for (int j = 1; j < m; ++j) {
+                // 当前列字符
+                char curr = strs[j].charAt(i);
+                // 如果不是升序，跳出循环，result + 1
+                if (pre > curr) {
+                    ++result;
+                    break;
+                }
+                pre = curr;
+            }
+        }
+        return result;
+    }
+}
+```
+
+## [449. 序列化和反序列化二叉搜索树](https://leetcode.cn/problems/serialize-and-deserialize-bst/)
+
+`tag: 序列化、二叉搜索树、后序遍历、栈`
+
+```java
+/**
+ * 解题思路：二叉搜索树，中序遍历是有序的。还原一颗二叉树需要通过中序遍历数组 + (先序遍历 / 后序遍历)
+ * 序列化：得到先序遍历/后序遍历数组，再转化为字符串 -- 可以递归实现，这里使用栈实现
+ * 反序列化：将字符串转化为先序遍历/后序遍历数组，根据二叉搜索树的特性（有序），进行还原。
+ */
+public class Codec {
+
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        List<Integer> list = postOrder(root);
+        // 将元素列表转换为字符串
+        String str = list.toString();
+        // 去掉 []
+        return str.substring(1, str.length() - 1);
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        if (data == "") {
+            return null;
+        }
+        // 分割字符串
+        String[] vals = data.split(", ");
+        // 通过栈存储元素值
+        Deque<Integer> stack = new ArrayDeque<>();
+        for (String val : vals) {
+            // 转化为整数
+            stack.push(Integer.parseInt(val));
+        }
+        // 构造二叉搜索树
+        return construct(Integer.MIN_VALUE, Integer.MAX_VALUE, stack);
+    }
+
+    // 根据后序数组 和 二叉搜索树的特性，构造二叉搜索树
+    private TreeNode construct(int lower, int upper, Deque<Integer> stack) {
+        if (stack.isEmpty() || lower > stack.peek() || upper < stack.peek()) {
+            return null;
+        }
+        int val = stack.pop();
+        TreeNode root = new TreeNode(val);
+        // 后序遍历 -- 左 右 中 --> 进栈之后 -- 中 右 左
+        root.right = construct(val, upper, stack);
+        root.left = construct(lower, val, stack);
+        return root;
+    }
+
+    // 后序遍历 -- 使用栈实现
+    private List<Integer> postOrder(TreeNode root) {
+        // 存储元素值
+        List<Integer> list = new ArrayList<>();
+        // 栈 -- 保存没有遍历完成的结点
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        // 保存当前遍历结点的前一个结点
+        TreeNode pre = null;
+        while (root != null || !stack.isEmpty()) {
+            // 结点不空，进栈并访问左子树
+            if (root != null) {
+                stack.push(root);
+                root = root.left;
+            } else {
+                // 否则，判断是否访问了右子树
+                root = stack.peek();
+                // 如果没有右结点 或者 已经访问过右结点
+                if (root.right == null || root.right == pre) {
+                    list.add(stack.pop().val);
+                    // 当前遍历的结点
+                    pre = root;
+                    // 置下一个访问的结点为空
+                    root = null;
+                } else {
+                    // 否则，访问右子树
+                    root = root.right;
+                }
+            }
+        }
+        return list;
+    }
+}
+```
+
+## [1305. 两棵二叉搜索树中的所有元素](https://leetcode.cn/problems/all-elements-in-two-binary-search-trees/)
+
+`tag: 中序遍历、归并、栈`
+
+```java
+/**
+ * 解题思路：二叉搜索树 -- 中序遍历元素有序。中序遍历得到有序列表，再合并
+ */
+class Solution {
+    public List<Integer> getAllElements(TreeNode root1, TreeNode root2) {
+        return merge(inOrder(root1), inOrder(root2));
+    }
+
+    // 合并有序列表
+    private List<Integer> merge(List<Integer> result1, List<Integer> result2) {
+        List<Integer> result = new ArrayList<>();
+        int n1 = result1.size(), n2 = result2.size();
+        int i = 0, j = 0;
+        while (i < n1 && j < n2) {
+            if (result1.get(i) <= result2.get(j)) {
+                result.add(result1.get(i++));
+            } else {
+                result.add(result2.get(j++));
+            }
+        }
+        // result.addAll(index, c) -- 使用此方法可以将剩余下标的元素添加到列表中
+        while (i < n1) {
+            result.add(result1.get(i++));
+        }
+        while (j < n2) {
+            result.add(result2.get(j++));
+        }
+        return result;
+    }
+
+    // 中序遍历
+    private List<Integer> inOrder(TreeNode root) {
+
+        List<Integer> result = new ArrayList<>();
+
+        // 使用栈保存还没有遍历完成的元素
+        Deque<TreeNode> stack = new ArrayDeque<>();
+
+        while (root != null || !stack.isEmpty()) {
+            // 当前结点不空，进栈
+            if (root != null) {
+                stack.push(root);
+                // 遍历左子树
+                root = root.left;
+            } else {
+                // 出栈
+                TreeNode curr = stack.pop();
+                // 遍历完成的元素进列表
+                result.add(curr.val);
+                // 遍历右子树
+                root = curr.right;
+            }
+        }
+        return result;
+    }
+}
+```
 
 ## [942. 增减字符串匹配](https://leetcode.cn/problems/di-string-match/)
 
