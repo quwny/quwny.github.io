@@ -26,11 +26,11 @@
     <loc>https://codeqwy.github.io/tags/</loc>
     <lastmod>2022-05-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://codeqwy.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2022-04-30T16:22:44+08:00</lastmod>
-  </url><url>
     <loc>https://codeqwy.github.io/posts/tech/</loc>
     <lastmod>2022-05-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://codeqwy.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2022-04-30T16:22:44+08:00</lastmod>
   </url><url>
     <loc>https://codeqwy.github.io/tags/leetcode/</loc>
     <lastmod>2022-05-12T00:00:00+00:00</lastmod>
@@ -48,8 +48,8 @@
   </url><url>
     <loc>https://codeqwy.github.io/about/</loc>
   </url><url>
-    <loc>https://codeqwy.github.io/search/</loc>
-  </url><url>
     <loc>https://codeqwy.github.io/series/</loc>
+  </url><url>
+    <loc>https://codeqwy.github.io/search/</loc>
   </url>
 </urlset>
