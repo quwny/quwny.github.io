@@ -18,123 +18,134 @@ buildExpired: false
 paginate: 15    # 首页每页显示的文章数
 
 minify:
-    disableXML: true
-    # minifyOutput: true
+  disableXML: true
+  # minifyOutput: true
 
 permalinks:
   post: "/:title/"
   # post: "/:year/:month/:day/:title/"
 
-defaultContentLanguage: en # 最顶部首先展示的语言页面
+defaultContentLanguage: zh # 最顶部首先展示的语言页面
 defaultContentLanguageInSubdir: true
 
-languages:
-    en:
-      languageName: "English"
-      # contentDir: content/english
+menu:
+  main:
+    - identifier: home
+      name: 🏠主页
+      url: /
       weight: 1
-      profileMode:
-        enabled: true
-        title: (〃'▽'〃)
-      menu:
-        main:
-          - identifier: search
-            name: 🔍搜索
-            url: search
-            weight: 1
-          - identifier: home
-            name: 🏠主页
-            url: /
-            weight: 2
-          - identifier: posts
-            name: 📚文章
-            url: posts
-            weight: 3
-          - identifier: archives
-            name: ⏱时间轴
-            url: archives/
-            weight: 20
-          - identifier: tags
-            name: 🔖标签
-            url: tags
-            weight: 40
-          - identifier: about
-            name: 🙋🏻‍♂️关于
-            url: about
-            weight: 50
-          - identifier: links
-            name: 🤝友链
-            url: links
-            weight: 60
+    - identifier: search
+      name: 🔍搜索
+      url: search
+      weight: 2
+    - identifier: posts
+      name: 📚文章
+      url: posts
+      weight: 3
+    - identifier: categories
+      name: 分类
+      url: /categories/
+      weight: 10
+    - identifier: archives
+      name: ⏱时间轴
+      url: archives/
+      weight: 20
+    - identifier: tags
+      name: 🔖标签
+      url: tags
+      weight: 40
+    - identifier: about
+      name: 🙋🏻‍♂️关于
+      url: about
+      weight: 50
 
+# PaperMod 使用 Fuse.js 做搜索功能
 outputs:
-    home:
-        - HTML
-        - RSS
-        - JSON
+  home:
+    - HTML
+    - RSS
+    - JSON # 必要
 
 params:
-    env: production # to enable google analytics, opengraph, twitter-cards and schema.
-    # description: "这是一个纯粹的博客......"
-    author: Quwny
-    # author: ["Me", "You"] # multiple authors
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  # description: "这是一个纯粹的博客......"
+  author: Quwny
+  # author: ["Me", "You"] # multiple authors
 
+  # defaultTheme: light
+  # defaultTheme: dark
+  defaultTheme: auto # 根据浏览器主题选择主题
+  disableThemeToggle: false # 切换主题图标
+
+  # 页面模式 -- Regular Mode（默认）、Home-Info Mode、Profile Mode
+  homeInfoParams:
+    Title: 欢迎访问 Quwny 的博客！ (〃'▽'〃)
+    Content: 技术、生活、学习
+
+  socialIcons: # optional
+    - name: "GitHub"
+      url: "https://github.com/codeqwy"
   
-    defaultTheme: auto  # defaultTheme: light or  dark 
-    disableThemeToggle: false
-    DateFormat: "2006-01-02" # 时间格式
-    ShowShareButtons: true # 显示分享按钮
-    ShowReadingTime: true # 显示阅读时长
-    # disableSpecialistPost: true
-    displayFullLangName: true
-    ShowPostNavLinks: true
-    ShowBreadCrumbs: true
-    ShowCodeCopyButtons: true
-    hideFooter: false # 隐藏页脚
-    ShowWordCounts: true
-    VisitCount: true
+  DateFormat: "2006-01-02" # 时间格式
 
-    ShowLastMod: true #显示文章更新时间
+  ShowShareButtons: true # 显示分享按钮
+  ShowReadingTime: true # 显示阅读时长
+  ShowWordCounts: true # 显示字数
+  ShowLastMod: true # 显示文章更新时间
+  # disableSpecialistPost: true
+  displayFullLangName: true
+  ShowPostNavLinks: true # 显示上/下一篇文章链接
+  ShowBreadCrumbs: true # 显示面包屑导航
+  ShowCodeCopyButtons: true # 显示复制按钮
+  hideFooter: false # 隐藏页脚
 
-    ShowToc: true # 显示目录
-    TocOpen: true # 自动展开目录
+  VisitCount: true
 
-    comments: true
+  ShowToc: true # 显示目录
+  TocOpen: true # 自动展开目录
 
-    fuseOpts:
-        isCaseSensitive: false
-        shouldSort: true
-        location: 0
-        distance: 1000
-        threshold: 1
-        minMatchCharLength: 0
-        keys: ["title", "permalink", "summary"]
+  comments: true # 评论
 
-    twikoo:
-      version: 1.4.11
+  assets:
+    favicon: "/favicon.ico"
+    favicon16x16: "/favicon-16x16.png"
+    favicon32x32: "/favicon-32x32.png"
+    apple_touch_icon: "/apple-touch-icon.png"
+
+  fuseOpts:
+    isCaseSensitive: false # 大小写敏感
+    shouldSort: true # 排序
+    location: 0
+    distance: 1000
+    threshold: 1
+    minMatchCharLength: 0 # 最少匹配字符长度
+    keys: ["title", "permalink", "summary"] # 搜索关键字的范围
+
+  twikoo:
+    version: 1.4.11
 
 taxonomies:
-    category: categories
-    tag: tags
-    series: series
+  category: categories
+  tag: tags
+  series: series
 
 markup:
-    goldmark:
-        renderer:
-            unsafe: true # HUGO 默认转义 Markdown 文件中的 HTML 代码，如需开启的话
-    highlight:
-        # anchorLineNos: true
-        codeFences: true  # codeFences：代码围栏功能，这个功能一般都要设为 true 的，不然很难看，就是干巴巴的-代码文字，没有颜色。
-        guessSyntax: true
-        lineNos: true
-        # noClasses: false
-        # style: monokai
-        style: darcula
+  goldmark:
+    renderer:
+        unsafe: true # HUGO 默认转义 Markdown 文件中的 HTML 代码，如需开启的话
+  highlight:
+    # anchorLineNos: true
+    codeFences: true  # codeFences：代码围栏功能，这个功能一般都要设为 true 的，不然很难看，就是干巴巴的-代码文字，没有颜色。
+    guessSyntax: true # guessSyntax：猜测语法，这个功能建议设置为 true, 如果你没有设置要显示的语言则会自动匹配。
+    lineNos: true # lineNos：是否显示行号，我比较喜欢显示，所以我设置的为 true.
+    # noClasses: false
+    # style: monokai
+    style: darcula
 
-        
-        # guessSyntax：猜测语法，这个功能建议设置为 true, 如果你没有设置要显示的语言则会自动匹配。
-        # hl_Lines：高亮的行号，一般这个不设置，因为每个代码块我们可能希望让高亮的地方不一样。
-        # lineNoStart：行号从编号几开始，一般从 1 开始。
-        # lineNos：是否显示行号，我比较喜欢显示，所以我设置的为 true.
-        # lineNumbersInTable：使用表来格式化行号和代码,而不是 标签。这个属性一般设置为 true.
-        # noClasses：使用 class 标签，而不是内嵌的内联样式
+      
+    
+    # hl_Lines：高亮的行号，一般这个不设置，因为每个代码块我们可能希望让高亮的地方不一样。
+    # lineNoStart：行号从编号几开始，一般从 1 开始。
+    
+    # lineNumbersInTable：使用表来格式化行号和代码,而不是 标签。这个属性一般设置为 true.
+    # noClasses：使用 class 标签，而不是内嵌的内联样式

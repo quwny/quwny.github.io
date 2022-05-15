@@ -10,6 +10,119 @@ description: "LeetCode 每日一题"
 draft: false
 ---
 
+## [812. 最大三角形面积](https://leetcode.cn/problems/largest-triangle-area/)
+
+`tag: 三角形面积`
+
+```java
+/**
+ * 解题思路：求最大面积。任取三个坐标求面积，返回最大值。
+ * 三个坐标求三角形面积公式：A = 1 / 2 * |x1(y2 - y3) + x2(y3 - y1) + x3(y1 - y2)|
+ */
+class Solution {
+    public double largestTriangleArea(int[][] points) {
+        int n = points.length; // 坐标个数
+        double area = 0; // 面积
+        for (int i = 0; i < n; ++i) {
+            for (int j = i + 1; j < n; ++j) {
+                for (int k = j + 1; k < n; ++k) {
+                    double temp = 0.5 * Math.abs(points[i][0] * (points[j][1] - points[k][1])
+                            + points[j][0] * (points[k][1] - points[i][1])
+                            + points[k][0] * (points[i][1] - points[j][1]));
+                    area = Math.max(area, temp);
+                }
+            }
+        }
+        return area;
+    }
+}
+```
+
+## [6. Z 字形变换](https://leetcode.cn/problems/zigzag-conversion/)
+
+`tag: 字符串、Z 字形变换`
+
+```java
+/**
+ * 解题思路：根据 Z 字型的规律，重新生成字符串。
+ * 1·····1·····1
+ * 2···2·2···2
+ * 3·3···3·3
+ * 4·····4
+ */
+class Solution {
+    public String convert(String s, int numRows) {
+        int n = s.length(); // 字符串长度
+        // 边界
+        if (n <= 1 || numRows == 1) {
+            return s;
+        }
+        StringBuilder sb = new StringBuilder();
+        // String str = ""; // 存储新的字符串
+        for (int i = 0; i < numRows; ++i) {
+            int pos = i;
+            while (pos < n) {
+                if (i != numRows - 1) {
+                    sb.append(s.charAt(pos));
+                    // str += s.charAt(pos);
+                    pos += 2 * (numRows - i) - 2;
+                }
+                if (i != 0 && pos < n) {
+                    sb.append(s.charAt(pos));
+                    // str += s.charAt(pos);
+                    pos += 2 * i;
+                }
+            }
+        }
+        return sb.toString();
+        // return str;
+    }
+}
+```
+
+## [面试题 01.05. 一次编辑](https://leetcode.cn/problems/one-away-lcci/)
+
+`tag: 字符串，匹配`
+
+```java
+/**
+ * 解题思路：字符串有三种操作，插入、删除、替换。插入和删除可以视为一种情况，替换为另一种情况。
+ */
+class Solution {
+    public boolean oneEditAway(String first, String second) {
+        // 字符串长度
+        int fn = first.length(), sn = second.length();
+
+        // 字符串长度差大于 1
+        if (Math.abs(fn - sn) > 1) {
+            return false;
+        }
+
+        // 遍历字符串
+        int i = 0, j = 0, flag = 0;
+        while (i < fn && j < sn) {
+            // 出现不相同的字符
+            if (first.charAt(i++) != second.charAt(j++)) {
+                ++flag;
+                if (fn > sn) {
+                    --j;
+                }
+                if (fn < sn) {
+                    --i;
+                }
+            }
+            // 不相同的字符大于 1
+            if (flag > 1) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
+
+~~昨晚做题，突然没电关机，早上起来做的。难受！~~
+
 ## [944. 删列造序](https://leetcode.cn/problems/delete-columns-to-make-sorted/)
 
 `tag: 字符串、排序`
