@@ -1,7 +1,7 @@
 ---
 title: "LeetCode 每日一题"
 date: 2022-04-28T15:57:58+08:00
-lastmod: 2022-05-12
+lastmod: 2022-06-12
 categories: 
 - LeetCode
 tags: 
@@ -9,6 +9,422 @@ tags:
 description: "LeetCode 每日一题"
 draft: false
 ---
+
+## [890. 查找和替换模式](https://leetcode.cn/problems/find-and-replace-pattern/)
+
+`tag: 字符串、模式匹配、中等`
+
+```java
+/**
+ * 解题思路：建立双向映射规则，单词与模式进行匹配。
+ * 单词只包含小写字母。
+ */
+class Solution {
+    public List<String> findAndReplacePattern(String[] words, String pattern) {
+        List<String> res = new ArrayList<>(); // 存储结果
+        char[] pts = pattern.toCharArray(); // 转换为字符数组
+        // 保存映射规则
+        char[] rules1 = new char[26];
+        char[] rules2 = new char[26];
+        for (String word : words) {
+            Arrays.fill(rules1, '\0');
+            Arrays.fill(rules2, '\0');
+            int n = word.length();
+            for (int i = 0; i < n; ++i) {
+                char ch = word.charAt(i);
+                int j = pts[i] - 'a';
+                // 建立双向映射规则
+                if (rules1[j] == '\0' && rules2[ch - 'a'] == '\0') {
+                    rules1[j] = ch;
+                    rules2[ch - 'a'] = pts[i];
+                    continue;
+                }
+                // 如果不符合映射规则，跳出循环  
+                if (rules1[j] != ch) {
+                    n = -1;
+                    break;
+                }
+            }
+            if (n != -1) {
+                res.add(word);
+            }
+       }
+       return res;
+    }
+}
+```
+
+## [875. 爱吃香蕉的珂珂](https://leetcode.cn/problems/koko-eating-bananas/)
+
+`tag: 二分查找、中等`
+
+```java
+/**
+ * 解题思路：二分查找
+ */
+class Solution {
+    public int minEatingSpeed(int[] piles, int h) {
+        // 二分查找边界，low -- 最小边界 1，high -- 最大边界 香蕉堆中的最大香蕉数
+        int low = 1, high = Arrays.stream(piles).max().getAsInt();
+
+        int k = high;
+
+        // 二分查找
+        while (low < high) {
+            int speed = (high - low) / 2 + low;
+
+            // 以 speed 速度吃香蕉所花费的时间
+            long time = getTime(piles, speed);
+
+            if (time <= h) {
+                // 更新 k
+                k = speed;
+                high = speed;
+            } else {
+                low = speed +1;
+            }
+        }
+        return k;
+    }
+
+    /**
+     * 以 speed 速度吃香蕉所花费的时间
+     */
+    private long getTime(int[] piles, int speed) {
+        long time = 0;
+        for (int pile : piles) {
+            // 吃 pile 需要花费的时间
+            int currTime = (pile + speed - 1) / speed;
+            time += currTime;
+        }
+        return time;
+    }
+}
+```
+
+## [467. 环绕字符串中唯一的子字符串](https://leetcode.cn/problems/unique-substrings-in-wraparound-string/)
+
+`tag: 字符串、动态规划、中等`
+
+`tips: 看官方才发现是动态规划，我的处理方式没有官方的好。`
+
+```java
+/**
+ * 解题思路：字符串 s 是无限环绕字符串 "...zabcdefghijklmnopqrstuvwxyza..."。
+ * 因此，可以快速的通过判断前后两个字符的差值是否为 1 或者 - 25，判定子串是否在 s 中。
+ * 
+ * 难点：唯一性如何保证？
+ * 方式一：使用哈希表或者集合存储子串 -- 这种方式超时
+ * 方式二：因为子串是有规律的连续串，可以通过判断当前连续子串的长度和结尾字符进行快速判断唯一性。
+ */
+class Solution {
+    public int findSubstringInWraproundString(String p) {
+        int n = p.length(); // 字符串长度
+        int res = 0; // 结果
+        // 存储每个字符目前的最长连续子串长度
+        int[] lens = new int[26];
+        // 初始赋值为 0
+        Arrays.fill(lens, 0);
+
+        // 特殊处理 -- 第一个字符
+        lens[p.charAt(0) - 'a'] = 1;
+        res += 1;
+
+        // 子串连续的起点和终点
+        int s = 0, e = 0;
+        // 遍历字符串，取连续的子串
+        for (int i = 1; i < n; ++i) {
+            // 判断是否连续 -- 需要考虑无限循环 -- 对 26 进行取余
+            char ch1 = p.charAt(i - 1);
+            char ch2 = p.charAt(i);
+
+            // 如果不是连续的
+            if (((ch1 - 'a' + 1) % 26 + 'a') != ch2) {
+                s = i;
+            }
+            e = i;
+
+            // 精髓所在
+            int len = e - s + 1;
+            // 当前子串的长度大于已经存在的子串，则添加没有遍历过的子串
+            if (lens[ch2 - 'a'] < len) {
+                res += len - lens[ch2 - 'a'];
+                // 更新长度
+                lens[ch2 - 'a'] = len;
+            }
+        }
+        return res;
+    }
+}
+```
+
+## [965. 单值二叉树](https://leetcode.cn/problems/univalued-binary-tree/)
+
+`tag: 单值二叉树、遍历、简单`
+
+```java
+class Solution {
+    // 根结点的值
+    private Integer val;
+
+    public boolean isUnivalTree(TreeNode root) {
+        val = root.val;
+        return preOrder(root);
+    }
+
+    private boolean preOrder(TreeNode root) {
+        // 边界 -- true
+        if (root == null) {
+            return true;
+        }
+        // 值不相等
+        if (root.val != val) {
+            return false;
+        }
+        // 遍历左子树
+        if (preOrder(root.left)) {
+            // 遍历右子树
+            return preOrder(root.right);
+        }
+        // 左子树存在值不相同的结点
+        return false;
+    }
+}
+```
+
+## [961. 在长度 2N 的数组中找出重复 N 次的元素](https://leetcode.cn/problems/n-repeated-element-in-size-2n-array/)
+
+```java
+/**
+ * 解题思路：随机选取一个元素，判断是否是重复元素（为了方便，选择第一个），如果不是，舍弃此元素，并使用投票算法。
+ */
+class Solution {
+    public int repeatedNTimes(int[] nums) {
+        // res -- 结果
+        int res = nums[0], n = nums.length;
+        // 计数
+        int count = 1, curr = nums[0];
+        for (int i = 1; i < n; ++i) {
+            if (nums[i] == res) {
+                return res;
+            }
+
+            // 投票算法
+            if (curr == nums[i]) {
+                ++count;
+            } else {
+                if (--count <= 0) {
+                    curr = nums[i];
+                    count = 1;
+                }
+            }
+
+            if (count > 1) {
+                return curr;
+            }
+        }
+
+        return curr;
+    }
+}
+```
+
+## [436. 寻找右区间](https://leetcode.cn/problems/find-right-interval/)
+
+`tag: 排序、双指针、中等`
+
+```java
+/**
+ * 解题思路：双指针
+ */
+class Solution {
+    public int[] findRightInterval(int[][] intervals) {
+        int n = intervals.length;
+        // 存储左边界及对应下标
+        int[][] sInterval = new int[n][2];
+        // 存储右边界及对应下标
+        int[][] eInterval = new int[n][2];
+        //
+        int[] res = new int[n];
+
+        // 赋值
+        for (int i = 0; i < n; ++i) {
+            sInterval[i][0] = intervals[i][0];
+            sInterval[i][1] = i;
+            eInterval[i][0] = intervals[i][1];
+            eInterval[i][1] = i;
+        }
+        // 排序 -- 从小到大
+        Arrays.sort(sInterval, (o1, o2) -> o1[0] - o2[0]);
+        Arrays.sort(eInterval, (o1, o2) -> o1[0] - o2[0]);
+
+        for (int i = 0, j = 0; i < n; ++i) {
+            // 如果 ei > sj，遍历
+            while (j < n && sInterval[j][0] < eInterval[i][0]) {
+                ++j;
+            }
+            res[eInterval[i][1]] = -1;
+            if (j < n) {
+                res[eInterval[i][1]] = sInterval[j][1];
+            }
+        }
+
+        return res;
+    }
+}
+```
+
+## [462. 最少移动次数使数组元素相等 II](https://leetcode.cn/problems/minimum-moves-to-equal-array-elements-ii/)
+
+`tag: 排序、中位数`
+
+```java
+/**
+ * 参考了官方题解。
+ * TODO 留个坑 快速选择第 k 小的数
+ */
+class Solution {
+    public int minMoves2(int[] nums) {
+        // 排序 小 --> 大
+        Arrays.sort(nums);
+        // mid - 中位数
+        int count = 0, mid = nums[nums.length / 2];
+        // 计算移动次数
+        for (int num : nums) {
+            count += Math.abs(num - mid);
+        }
+        return count;
+    }
+}
+```
+
+## [668. 乘法表中第k小的数](https://leetcode.cn/problems/kth-smallest-number-in-multiplication-table/)
+
+`tag: 二分查找`
+
+yukiyama 大佬解析二分查找：[二分查找从入门到入睡](https://leetcode.cn/circle/discuss/ooxfo8/)
+
+```java
+/**
+ * 看了官方题解
+ * 解题思路：二分查找。边界为 [1, mn]
+ */
+class Solution {
+    public int findKthNumber(int m, int n, int k) {
+        int l = 1, r = m * n;
+        while (l < r) {
+            int x = l + (r - l) / 2;
+            // count -- 小于 x 的个数
+            // x / n -- 元素小于 x 的行数
+            int count = x / n * n;
+            // 剩余没有完全小于 x 的行
+            for (int i = x / n + 1; i <= m; ++i) {
+                count += x / i;
+            }
+            // TODO 解释为什么 count == k 时还要继续二分？
+            if (count >= k) {
+                // 取左半部分
+                r = x;
+            } else {
+                // 取右半部分
+                l = x + 1;
+            }
+        }
+        return l;
+    }
+}
+```
+
+## [953. 验证外星语词典](https://leetcode.cn/problems/verifying-an-alien-dictionary/)
+
+`tag: 字符串、字典序`
+
+```java
+/**
+ * 解题思路：使用数组保存字母表的顺序。两两比较是否符合字典序。
+ */
+class Solution {
+    private int[] o = new int[26];
+
+    public boolean isAlienSorted(String[] words, String order) {
+
+        // 保存字典序
+        for (int i = 0; i < 26; ++i) {
+            o[order.charAt(i) - 'a'] = i;
+        }
+
+        int n = words.length;
+        // 两两比较是否符合字典序
+        for (int i = 1; i < n; ++i) {
+            if (order(words[i - 1], words[i])) {
+                continue;
+            }
+            return false;
+        }
+        return true;
+    }
+
+    // 比较是否符合字典序
+    private boolean order(String s1, String s2) {
+        int len1 = s1.length();
+        int len2 = s2.length();
+        int j = 0, k = 0;
+
+        while (j < len1 && k < len2) {
+            char ch1 = s1.charAt(j++);
+            char ch2 = s2.charAt(k++);
+            if (ch1 == ch2) {
+                continue;
+            }
+            // 不符合字典序
+            if (o[ch1 - 'a'] > o[ch2 - 'a']) {
+                return false;
+            }
+            return true;
+        }
+        return len1 <= len2;
+    }
+}
+```
+
+## [面试题 04.06. 后继者](https://leetcode.cn/problems/successor-lcci/)
+
+`tag: 二叉搜索树、中序后继`
+
+```java
+/**
+ * 解题思路：二叉搜索树，左子树 < 结点 < 右子树。因此结点 A 的中序后继结点 B 是大于并最接近 A 的结点。
+ * 存在三种情况
+ * 1. 结点 A 有右子树，则后继结点为右子树的最左结点 B
+ * 2. 结点 A 没有右子树且结点 A 属于最靠近该结点 A 的左子树中，则后继结点是左子树的父结点 B
+ * 3. 结点 A 没有右子树且不在某一左子树中，则后继结点为 null
+ */
+class Solution {
+    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+        TreeNode post = null;
+        // 右子树不空
+        if (p.right != null) {
+            // 后继结点为右子树的最左结点
+            post = p.right;
+            while (post.left != null) {
+                post = post.left;
+            }
+            return post;
+        }
+        while (root != null) {
+            if (p.val >= root.val) {
+                // 跳转到右子树中
+                root = root.right;
+            } else {
+                // 跳转到左子树，并记录当前结点
+                post = root;
+                root = root.left;
+            }
+        }
+        return post;
+    }
+}
+```
 
 ## [812. 最大三角形面积](https://leetcode.cn/problems/largest-triangle-area/)
 
