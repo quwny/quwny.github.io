@@ -6,7 +6,16 @@
     <description>Recent content on QuwnyBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 30 Apr 2022 16:22:44 +0800</lastBuildDate><atom:link href="https://quwny.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Aug 2022 22:21:58 +0800</lastBuildDate><atom:link href="https://quwny.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo_about</title>
+      <link>https://quwny.github.io/hugo_about/</link>
+      <pubDate>Fri, 05 Aug 2022 22:21:58 +0800</pubDate>
+      
+      <guid>https://quwny.github.io/hugo_about/</guid>
+      <description>关于 Hugo 的一些内容</description>
+    </item>
+    
     <item>
       <title>Java中的Lambda表达式</title>
       <link>https://quwny.github.io/posts/tech/java%E4%B8%AD%E7%9A%84lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
