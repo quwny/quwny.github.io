@@ -1,7 +1,7 @@
 ---
 title: "LeetCode 每日一题"
 date: 2022-04-28T15:57:58+08:00
-lastmod: 2022-06-12
+lastmod: 2022-06-25
 categories: 
 - LeetCode
 tags: 
@@ -9,6 +9,8 @@ tags:
 description: "LeetCode 每日一题"
 draft: false
 ---
+
+> 因为不是写题解的模式，感觉这样记录每日一题意义不大。停更！
 
 ## [890. 查找和替换模式](https://leetcode.cn/problems/find-and-replace-pattern/)
 
