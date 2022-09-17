@@ -1,967 +1,129 @@
-# ---------------------------------------------------------------
-# Hugo 引擎的基础配置
-# ---------------------------------------------------------------
-
 baseURL: https://quwny.github.io/  #绑定的域名
-title: QuwnyBlog # 站点标题
-theme: hugo-theme-next # 主题名字，和 themes 文件夹下的一致
+title: QuwnyBlog # 站点名称
+paginate: 10 # 每页显示的文章数
+theme: PaperMod # 主题名字，和 themes 文件夹下的一致
+# languageCode: zh-cn # en-us
 
-# 站点默认的语言和代码
-defaultContentLanguage: zh-cn
-languageCode: zh-CN
+enableInlineShortcodes: true #允许内联短码
+enableEmoji: true # 允许使用 Emoji 表情，建议 true
+enableRobotsTXT: true # 允许爬虫抓取到搜索引擎，建议 true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
 
-# 是否包含中文，日语，韩文
-hasCJKLanguage: true
-# 每页显示文章数量
-paginate: 10
-# 开启支持表情符号
-enableEmoji: true
-# 让 Makedown 文档支持 HTML 语法，高亮，文章目录等功能
+# googleAnalytics: UA-123-45
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+params:
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  title: ExampleSite
+  description: "ExampleSite description"
+  keywords: [Blog, Portfolio, PaperMod]
+  author: Quwny
+  # images: ["<link or path of image for opengraph, twitter-cards>"]
+  DateFormat: "January 2, 2006"
+  defaultTheme: auto # dark, light
+  disableThemeToggle: false
+
+  ShowReadingTime: true # 显示阅读时间
+  ShowShareButtons: false # 显示分享按钮
+  ShowPostNavLinks: true 
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: false
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  VisitCount: true
+  UseHugoToc: true
+  disableSpecial1stPost: false
+  disableScrollToTop: false
+  comments: false
+  hidemeta: false
+  hideSummary: false
+  showtoc: false
+  tocopen: false
+
+  assets:
+    # disableHLJS: true # to disable highlight.js
+    # disableFingerprinting: true
+    favicon: "/favicon.ico"
+    favicon16x16: "/favicon-16x16.png"
+    favicon32x32: "/favicon-32x32.png"
+    apple_touch_icon: "/apple-touch-icon.png"
+    safari_pinned_tab: "/apple-touch-icon.png"
+
+  label:
+    text: "Quwny"
+    icon: /apple-touch-icon.png
+    iconHeight: 35
+
+  # home-info mode
+  homeInfoParams:
+    Title: "欢迎访问 Quwny 博客"
+    Content: ""
+
+  # socialIcons:
+  #   - name: twitter
+  #     url: "https://twitter.com/"
+  #   - name: stackoverflow
+  #     url: "https://stackoverflow.com"
+  #   - name: github
+  #     url: "https://github.com/"
+
+  # analytics:
+  #   google:
+  #     SiteVerificationTag: "XYZabc"
+  #   bing:
+  #     SiteVerificationTag: "XYZabc"
+  #   yandex:
+  #     SiteVerificationTag: "XYZabc"
+
+  # cover:
+  #   hidden: true # hide everywhere but not in structured data
+  #   hiddenInList: true # hide on list pages and home
+  #   hiddenInSingle: true # hide on single page
+
+  editPost:
+    URL: "https://github.com/qunwy/quwny.github.io/content"
+    Text: "Suggest Changes" # edit text
+    appendFilePath: true # to append file path to Edit link
+
+  # for search
+  # https://fusejs.io/api/options.html
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+menu:
+  main:
+    - identifier: search
+      name: 🔍搜索
+      url: search
+      weight: 1
+    - identifier: archives
+      name: ⏱时间轴
+      url: /archives/
+      weight: 10
+    - identifier: tags
+      name: 🔖标签
+      url: /tags/
+      weight: 20
+# Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
+pygmentsUseClasses: true
 markup:
   goldmark:
     renderer:
-      unsafe: true
+      unsafe: true # HUGO 默认转义 Markdown 文件中的 HTML 代码，如需开启的话
   highlight:
+    noClasses: false
+    # anchorLineNos: true
     codeFences: true
-    lineNos: true
-    lineNumbersInTable: true
-    noClasses: true
-    # 高亮代码的样式名称，可选：monokai | emacs | api | dracula | friendly
-    # 更多的样式：https://xyproto.github.io/splash/docs/all.html 
-    style: "monokai"
-  tableOfContents:
-    # 开始/结束标题级别：1-6
-    startLevel: 1
-    endLevel: 3
-    ordered: false
-
-# 站点文章导航文件
-sitemap:
-  filename: "sitemap.xml"
-  changefreq: "weekly"
-  priority: 0.5
-
-outputFormats:
-  RSS:
-    baseName: "rss"
-  # 自定义生成本地搜索文件
-  LocalIndexes:
-    mediaType: application/xml
-    baseName: searchindexes
-    isPlainText: true
-    notAlternative: true
-  # 生成 Algolia 索引文件
-  AlgoliaIndexes:
-    mediaType: application/json
-    baseName: algolia
-    isPlainText: true
-    notAlternative: true
-
-# 默认使用本地搜索，如切换到 Algolia 搜索引擎，
-# 请将下面的 LocalIndexes 替换成 AlgoliaIndexes
-outputs:
-  home: ["HTML", "RSS", "LocalIndexes"]
-
-# 输出 robots 文件支持爬虫扫描
-enableRobotsTXT: true
-
-#--------------------------------------
-# 菜单配置说明
-# identifier ： 唯一标识不可重复
-# name       ： 菜单显示名称
-# pageref    ： 本站点链接地址，与 URL 选其一
-# url        ： 站点外部链接地址，以 http 或者 https 开头
-# pre        ： 菜单小图标
-# weight     ： 显示顺序，字数越小越靠前
-# -------------------------------------
-menus:
-  main:
-    - identifier: home
-      name: 首页
-      pageref: /
-      pre: home
-      weight: 1
-    - identifier: archives
-      name: 归档
-      pageref: /archives
-      pre: archive
-      weight: 2
-    - identifier: about
-      name: 关于
-      pageref: /about.html
-      pre: user
-      weight: 3
-
-#-----------------------------------------
-# Hugo NexT 主题参数配置
-#-----------------------------------------
-params:
-  # 需要显示文章的部分，即content目录下的文件夹名称
-  mainSections: ["post"]
-  # 年，月，日及时间的格式化样式
-  yearFormat: "2006"
-  monthFormat: "01-02"
-  dateFormat: "2006-01-02"
-  timeFormat: "2006-01-02T15:04:05-07:00"
-
-  # 页面模式
-  #scheme: Muse
-  #scheme: Mist
-  #scheme: Pisces
-  scheme: Gemini
-
-  # 开启暗模式
-  # Dark Mode
-  darkmode: true
-
-
-  # 站点基本信息
-  author: NexT 主题
-  subtitle: 为 Hugo 打造的主题
-  description: 保持简单的易用性和强大的功能。
-  keywords: Hugo,NexT,主题,简单,强大
-
-  # 不同尺寸站点图标
-  favicon:
-    icon: /static/favicon.ico
-    small: /static/favicon_16x16.png
-    medium: /static/favicon_32_32.png
-    appleTouchIcon: /static/apple_touch_icon.png
-
-  # 自定义 Logo （目前只支持 Mist 页面模式）
-  customLogo: #/imgs/hugo_next_logo.png
-
-  # 知识共享国际许可 4.0
-  # 更多信息： https://creativecommons.org/about/cclicenses/
-  creativeCommons:
-    # 可选配置： by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | cc-zero
-    license: by-nc-sa
-    # 可选配置： big | small
-    size: big
-    # 侧边栏显示
-    sidebar: true
-    # 文章底部显示
-    post: true
-
-  # OG SEO 配置
-  openGraph:
-    enable: true
-    #twitter:
-     #creator: <twitter:creator>
-     #image: <twitter:image>
-     #site: <twitter:site>
-    #googlePlus: <g+:profile_link>
-    #facebook:
-    #  admins: <fb:admin_id>
-    #  app_id: <fb:app_id>
-
-  # 开启菜单的图标及动画效果，数字徽章显示
-  menuSets:
-    icons: true
-    transition: true
-    badges: true
-
-
-  # ---------------------------------------------------------------
-  # 侧边栏设置
-  # Sidebar Settings
-  # ---------------------------------------------------------------
-  sidebar:
-    # 侧边栏位置，可选： left | right
-    position: left
-
-    # 自定义侧边栏的宽度，默认配置如下
-    # Muse | Mist: 320
-    # Pisces | Gemini: 240
-    width: 256
-
-    # 侧边栏的显示方式，可选值：
-    #  - post    默认在文章页面展开显示
-    #  - always  在所有页面展开显示
-    #  - hide    点击侧边栏按钮才显示
-    #  - remove  完全不显示侧边栏
-    display: post
-
-    # 侧边栏内部填充像素大小
-    padding: 18
-    # 侧边栏与顶部菜单栏的偏移像素大小（仅作用于 Pisces | Gemini 页面模式）
-    offset: 12
-
-  # 侧边栏头像
-  avatar:
-    # 设置显示头像的相对路径
-    url: /imgs/hugo_next_avatar.png
-    # 开启头像的圆形显示效果
-    rounded: true
-    # 开启头像随鼠标转动动画
-    rotated: true
-
-  # 是否在侧边栏显示文章、分类、标签信息
-  siteState: true
-
-  # 社交链接地址
-  # 用法： `Key: 名称 || 链接地址 || 图标`
-  # Key 用于排序建议从0开始
-  # Social Links
-  # Usage: `Key: name || permalink || icon`
-  # Key is the link label order.
-  # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
-  socials: 
-    social0: Github || https://github.com/elkan1788 || fab fa-github
-    #social1: E-Mail || mailto:yourname@gmail.com || fa fa-envelope
-    #Google: https://plus.google.com/yourname || fab fa-google
-    #Twitter: https://twitter.com/yourname || fab fa-twitter
-    #FB Page: https://www.facebook.com/yourname || fab fa-facebook
-    #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow
-    #YouTube: https://youtube.com/yourname || fab fa-youtube
-    #Instagram: https://instagram.com/yourname || fab fa-instagram
-    #Skype: skype:yourname?call|chat || fab fa-skype
-
-  # 社交链接图标设置
-  # Social icon setting
-  socialIcons:
-    # 是否支持图标显示
-    # Enable icon display
-    enable: true
-    # 只显示图标
-    # Only show icon
-    iconsOnly: false
-    # 开启动画效果
-    # Enable animation
-    transition: true
-
-  # 友情链接设置
-  # Friend links setting
-  linksSets:
-    # Fontawsome图标名称
-    # Icon name in Font Awesome
-    # See: https://fontawesome.com/
-    icon: fa fa-globe
-    # 显示标题
-    # Show title
-    title: 友情链接
-    # 可选值： block | inline
-    # Available values: block | inline
-    layout: inline
-
-  # 友情链接地址
-  # 用法： `Key: 显示名称 || 链接地址`
-  # Links of your friends
-  # Usage: `Key: name || permalink`
-  links: 
-    link0: Hugo-NexT || https://gitee.com/hugo-next/hugo-theme-next
-    link1: 凡梦星尘空间站 || https://lisenhui.cn
-
-  # 文章目录显示
-  # Table of Contents in the Sidebar
-  # Front-matter variable (nonsupport wrap expand_all).
-  toc:
-    enable: true
-    # 自动设置列表的数字
-    # Automatically add list number to toc.
-    number: true
-    # 开启自动换行显示
-    # If true, all words will placed on next lines 
-    # if header width longer then sidebar width.
-    wrap: false
-    # 自动展开子列表
-    # If true, all level of TOC in a post will be displayed, 
-    # rather than the activated part of it.
-    expandAll: false
-    # 最大的列表深度，建议不要超过3层
-    # Maximum heading depth of generated toc.
-    maxDepth: 3
-
-
-  # ---------------------------------------------------------------
-  # 站点底部设置
-  # ---------------------------------------------------------------
-  footer:
-    # 站点开始年份，默认为当下时间的年份
-    since: 2022
-    # 年份和版权信息之间的图标
-    icon:
-      # 图标名称
-      name: fa fa-heart
-      # 开启图标动画效果
-      animated: true
-      # 使用16进制设置图标的颜色
-      color: "#ff0000"
-
-    # 版权信息，如不设置将会使用 `author` 变量
-    copyright:
-
-    # 显示 Hugo 和 NexT 支持
-    # Powered by Hugo & NexT
-    powered: true
-
-    # 国内 ICP 备案和公安网备信息
-    beian:
-      enable: false
-      # ICP 备案的具体信息
-      icp: 
-      # 公安网备的省份简称
-      provinceAbbr: 沪
-      # 公安网备案号
-      gonganNum: 31011402009770
-
-
-
-  # ---------------------------------------------------------------
-  # 文章参数设置
-  # Post Settings
-  # ---------------------------------------------------------------
-
-  # TODO
-  # 将文章的描述内容用于首页展示（暂时未实现）
-  excerptDesc: true
-
-  # 是否显示阅读更多按钮
-  readMoreBtn: true
-
-  # 开启文章头部元素显示
-  postMeta:
-    itemText: true
-    created: true
-    updated:
-      enable: true
-      anotherDay: true
-    categories: true
-    wordCount: true
-    readTime: true
-
-  # 文章底部的设置
-  postFooter:
-    # 通过线条将文章和捐赠等信息隔开，并在线条上添加提示信息
-    endLineTip: "~ 我可是有底线的哟 ~"
-    # 是否使用小图标，默认使用 # 符号表示标签
-    # Use icon instead of the symbol # to indicate the tag
-    tagIcon: true
-
-  # 捐赠信息设置
-  rewardSets:
-    # 是否开启捐赠按钮，开启后将在每个文章页面底部显示
-    enable: true
-    # 是否开启捐赠方式的动画效果
-    animation: true
-    # 捐赠信息的描述，支持 HTML 语法
-    comment: '<i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))'
-    # 捐赠方式
-    # 用例： `名称:图像地址`
-    reward:
-      # wechatpay: /imgs/wechat-pay.png
-      # alipay: /imgs/ali-pay.png
-      #paypal: /images/paypal.png
-      #bitcoin: /images/bitcoin.png
-
-  # 提供其它订阅站点文章的方式
-  # 用例： `key: 名称 || 链接（图像地址）|| icon名称`
-  # Subscribe through Telegram Channel, Twitter, etc.
-  # Usage: `Key: name || permalink || icon` (Font Awesome)
-  followMe:
-    #channel0: Twitter || https://twitter.com/username || fab fa-twitter
-    #channel1: Telegram || https://t.me/channel_name || fab fa-telegram
-    channel2: WeChat || /images/wechat_channel.jpg || fab fa-weixin
-    channel3: RSS || /atom.xml || fa fa-rss
-
-  # 文章的在线编辑
-  # Post edit
-  # Easily browse and edit blog source code online.
-  postEdit:
-    enable: true
-    url: https://github.com/qunwy/quwny.github.io/tree/main/
-
-
-  # 设置文本的对齐方式
-  # Set the text alignment in posts / pages.
-  textAlign:
-    # 可选值： start | end | left | right | center | justify | justify-all | match-parent
-    # Available values: start | end | left | right | center | justify | justify-all | match-parent
-    desktop: justify
-    mobile: justify
-
-  # 在手机端显示减少填充和边距
-  # Reduce padding / margin indents on devices with narrow width.
-  mobileLayoutEconomy: true
-
-  # 顶部面板在不同模式下的颜色
-  # Browser header panel color.
-  themeColor:
-    light: "#222"
-    dark: "#222"
-
-  # TODO 暂时不支持
-  # Override browsers' default behavior.
-  bodyScrollbar:
-    # Place the scrollbar over the content.
-    overlay: false
-    # Present the scrollbar even if the content is not overflowing.
-    stable: true
-
-  # 代码块的设置
-  # Codeblock settings
-  codeblock:    
-    # 支持样式类型： default | flat | mac
-    # Available values: default | flat | mac
-    style: mac
-    # 在代码块上添加拷贝按钮
-    # Add copy button on codeblock
-    copyBtn: true
-
-  # 返回顶部设置
-  # Backtop settings
-  backTop:
-    # 开启返回顶部按钮显示
-    # If true, will display backtop button in buttom.
-    enable: true
-    # 在侧边栏显示返回顶部按钮
-    # Back to top in sidebar.
-    sidebar: false
-    # 在返回按钮上显示进度
-    # Scroll percent label in b2t button.
-    scrollpercent: true
-
-  # 读取进度条设置
-  # Reading progress bar
-  readingProgress:
-    # 是否显示读取进度条
-    # If true, will display the read progress bar.
-    enable: true
-    # 进度条开始位置： left | right
-    # Available values: left | right
-    start: left
-    # 进度条显示位置： top | bottom
-    # Available values: top | bottom
-    position: top
-    # 是否反向显示进度
-    # If true, the read progress will be reversed.
-    reversed: false
-    # 用16进制设置进度条颜色
-    # Change the color of progress bar, using Hex Code.
-    color: "#37c6c0"
-    # 进度条的高度
-    # Hight of the read progress bar.
-    height: 3px
-
-  # 书签功能
-  # Bookmark Support
-  bookmark:
-    # 开启书签功能
-    # If true, will display bookmark in all page.
-    enable: true
-    # 自定义书签显示颜色
-    # Customize the color of the bookmark.
-    color: "#222"
-    # 支持方式： auto | manual
-    # auto: 当关闭页面或点击书签按钮时，会自动保存当前的阅读进度
-    # manual: 只有当点击书签按钮时才会保存阅读进度
-    # If auto, save the reading progress when closing the page or clicking the bookmark-icon.
-    # If manual, only save it by clicking the bookmark-icon.
-    save: manual
-
-  # 右上角在 Github 上面关注我的横幅
-  # `Follow me on GitHub` banner in the top-right corner.
-  githubBanner:
-    # 是否开启显示
-    # If true, will display banner.
-    enable: true
-    # 你的 Github 仓库地址
-    # Your repository url on Github.
-    permalink: https://github.com/hugo-next
-    # 关注说明
-    # Show this title when cursor move on.
-    title: Follow me on GitHub
-
-
-  # ---------------------------------------------------------------
-  # TODO
-  # 字体设置（暂时未实现）
-  # Font Settings (not implemented by now)
-  # ---------------------------------------------------------------
-  # Find fonts on Google Fonts (https://fonts.google.com)
-  # All fonts set here will have the following styles:
-  #   light | light italic | normal | normal italic | bold | bold italic
-  # Be aware that setting too much fonts will cause site running slowly
-  # ---------------------------------------------------------------
-  # Web Safe fonts are recommended for `global` (and `title`):
-  # Arial | Tahoma | Helvetica | Times New Roman | Courier New | Verdana | Georgia | Palatino | Garamond | Comic Sans MS | Trebuchet MS
-  # ---------------------------------------------------------------
-
-  font:
-    enable: true
-
-    # Uri of fonts host, e.g. https://fonts.googleapis.com (Default).
-    host:
-
-    # Font options:
-    # `external: true` will load this font family from `host` above.
-    # `family: Times New Roman`. Without any quotes.
-    # `size: x.x`. Use `em` as unit. Default: 1 (16px)
-
-    # Global font settings used for all elements inside <body>.
-    global:
-      external: true
-      family: Lato
-      size:
-
-    # Font settings for site title (.site-title).
-    title:
-      external: true
-      family:
-      size:
-
-    # Font settings for headlines (<h1> to <h6>).
-    headings:
-      external: true
-      family:
-      size:
-
-    # Font settings for posts (.post-body).
-    posts:
-      external: true
-      family:
-
-    # Font settings for <code> and code blocks.
-    codes:
-      external: true
-      family:
-
-
-  # ---------------------------------------------------------------
-  # SEO 设置
-  # SEO Settings
-  # ---------------------------------------------------------------
-
-  # 给所有外部链接添加新标签打开
-  # Automatically add `target='_blank'` attribute in external URL.
-  exturl: 
-    enable: true
-    # 给所有外部链接加上图标
-    # If true, an icon will be attached to each external URL
-    icon: true
-
-  # 谷歌站点验证
-  # Google Webmaster tools verification.
-  # See: https://developers.google.com/search
-  googleSiteVerification: #<verify_code>
-
-  # 微软 Bing 站验证
-  # Bing Webmaster tools verification.
-  # See: https://www.bing.com/webmasters
-  bingSiteVerification: #<verify_code>
-
-  # Yandex 站点验证
-  # Yandex Webmaster tools verification.
-  # See: https://webmaster.yandex.ru
-  yandexSiteVerification: #<verify_code>
-
-  # 百度站点验证
-  # Baidu Webmaster tools verification.
-  # See: https://ziyuan.baidu.com/site
-  baiduSiteVerification: #<verify_code>
-
-
-  # ---------------------------------------------------------------
-  # 第三方插件和服务设置
-  # Third Party Plugins & Services Settings
-  # ---------------------------------------------------------------
-
-  # TODO
-  # 数学公式渲染支持（暂时未实现）
-  # Math Formulas Render Support
-  # Warning: Please install / uninstall the relevant renderer according to the documentation.
-  # See: https://theme-next.js.org/docs/third-party-services/math-equations
-  # Server-side plugin: https://github.com/next-theme/hexo-filter-mathjax
-  math:
-    # Default (false) will load mathjax / katex script on demand.
-    # That is it only render those page which has `mathjax: true` in front-matter.
-    # If you set it to true, it will load mathjax / katex script EVERY PAGE.
-    every_page: false
-
-    mathjax:
-      enable: false
-      # Available values: none | ams | all
-      tags: none
-
-    katex:
-      enable: false
-      # See: https://github.com/KaTeX/KaTeX/tree/master/contrib/copy-tex
-      copy_tex: false
-
-  # TODO
-  # FancyBox is a tool that offers a nice and elegant way 
-  # to add zooming functionality for images.
-  # For more information: https://fancyapps.com/fancybox/
-  fancybox: false
-
-  # TODO
-  # Vanilla JavaScript plugin for lazyloading images.
-  # For more information: https://apoorv.pro/lozad.js/demo/
-  lazyload: false
-
-  # TODO
-  # Pangu Support
-  # For more information: https://github.com/vinta/pangu.js
-  # Server-side plugin: https://github.com/next-theme/hexo-pangu
-  pangu: false
-
-  # TODO
-  # Quicklink Support
-  # For more information: https://getquick.link
-  # Front-matter variable (nonsupport home archive).
-  quicklink:
-    enable: false
-
-    # Home page and archive page can be controlled through home and archive options below.
-    # This configuration item is independent of `enable`.
-    home: false
-    archive: false
-
-    # Default (true) will initialize quicklink after the load event fires.
-    delay: true
-    # Custom a time in milliseconds by which the browser must execute prefetching.
-    timeout: 3000
-    # Default (true) will attempt to use the fetch() API if supported (rather than link[rel=prefetch]).
-    priority: true
-
-
-  # ---------------------------------------------------------------
-  # 评论功能设置
-  # Comments Settings
-  # ---------------------------------------------------------------
-
-  # 评论组件设置，最多支持2个显示
-  # Multiple Comment System Support
-  comments:
-    # 开启评论组件
-    # If true, will show comment component in post end.
-    enable: false   
-    # 设置默认使用的评论插件
-    # 可选值：livere | waline | utterances | artalk | giscus
-    # Choose a comment system to be displayed by default.
-    # Available values: livere | waline | utterances | artalk | giscus 
-    active: giscus
-    # 让用户自己选择使用评论插件留言
-    # 如果设置为 false，将采用 active 参数的那个插件
-    # Setting `true` means remembering the comment system selected by 
-    # the visitor, otherwise use the `active` setting comment system.
-    storage: true
-    # TODO
-    # Lazyload all comment systems.
-    # lazyload: false
-    # 设置你要显示的2个评论插件，`weight` 数字越小越靠前
-    # `name` 参数名可选值：livere | waline | utterances | artalk | giscus
-    # Modify texts or order for any naves, here are some examples.
-    nav:
-      - name: waline
-        title: Waline
-        color: "#27ae60"
-        weight: 2
-      - name: giscus
-        title: Giscus
-        color: "#886ce4"
-        weight: 1
-
-  # Waline 评论插件
-  # 更多配置信息请参考：https://waline.js.org/
-  # Waline comments system
-  # More info seee: https://waline.js.org/
-  waline:
-    pageView: true
-    placeholder: "请文明发言"
-    emoji: false
-    imgUploader: false
-    wordLimit: 200
-    requiredMeta: ['nick', 'mail']
-    serverURL: #<your waline server url>
-
-  # Artalk 评论插件
-  # 更多配置信息请参考：https://artalk.js.org
-  # Artalk comments system
-  # More info see: https://artalk.js.org
-  # artalk:
-  #   site: "默认站点"
-  #   placeholder: "请文明发言，谢谢！"
-  #   server: #<your artalk server url>
- 
-  # Artalk 评论插件
-  # 更多配置信息请参考：
-  # LiveRe comments system
-  # You can get your uid from https://livere.com/
-  # livere:
-  #   uid: # <your_uid>
-
-  # Utterances 评论插件
-  # 更多配置信息请参考：https://utteranc.es
-  # Utterances comments system
-  # For more information: https://utteranc.es
-  # utterances:
-  #   # Github 仓库地址，格式：用户名/仓库名称
-  #   # Github repository owner and name
-  #   repo: username/repo-name
-  #   # 问题标题的模式，可选值：pathname | url | title | og:title
-  #   # Available values: pathname | url | title | og:title
-  #   issueTerm: pathname
-  #   # 问题的标签分类
-  #   # Label flag for Github issues
-  #   label: comments
-  #   # 主题可选值： github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light
-  #   # Available values: github-light | github-dark | preferred-color-scheme | github-dark-orange | icy-dark | dark-blue | photon-dark | boxy-light
-  #   theme: preferred-color-scheme
-
-  # Giscus 评论插件
-  # 更多配置信息请参考：https://giscus.app
-  # Giscus comments system
-  # For more information: https://giscus.app
-  giscus:
-    # Github 仓库地址，格式：用户名/仓库名称
-    # Github repository owner and name
-    repo: username/repo-name
-    # Giscus 生成的仓库 Id
-    # Generate repository Id from Giscus
-    repoId: #<repo-id>
-    # 讨论区的分类名称
-    # Github discussions category
-    category: Comments
-    # 讨论区分类 ID
-    # Generate category Id from Giscus
-    categoryId: #<category-id>
-    # 帖子上的反应将会显示在评论前
-    # The reactions for post will be shown before the comments
-    reactions: false
-    # 将元数据定期被发送到父页面（被嵌入的页面或控制台，用于调试）
-    # Metadata will be sent periodically to the parent window
-    emit: false
-    # 评论输入框的位置，可选值： top | bottom
-    # Aavilable value: top | bottom
-    # 讨论区帖子标题，可选值： pathname | url | title | og:title | 自定义
-    # Available values: pathname | url | title | og:title | custom
-    mapping: title
-    # 评论输入框的位置，可选值： top | bottom
-    # Aavilable value: top | bottom
-    inputPosition: top
-    # 主题可选值： light | light_high_contrast | light_protanopia | light_tritanopia | dark | dark_high_contrast | dark_protanopia | dark_tritanopia | dark_dimmed | transparent_dark | preferred_color_scheme
-    # Available values: light | light_high_contrast | light_protanopia | light_tritanopia | dark | dark_high_contrast | dark_protanopia | dark_tritanopia | dark_dimmed | transparent_dark | preferred_color_scheme
-    theme: preferred_color_scheme
-
-
-  # ---------------------------------------------------------------
-  # 文章小组件和分享服务设置
-  # Post Widgets & Content Sharing Services
-  # ---------------------------------------------------------------
-
-  # TODO
-  # 文章评级功能（暂未支持）
-  # Star rating support to each article.
-  # To get your ID visit https://widgetpack.com
-  rating:
-    enable: false
-    id:     # <app_id>
-    color:  "#fc6423"
-
-  # AddThis文章分享功能
-  # 更多信息及配置请参考：https://www.addthis.com
-  # AddThis Share. 
-  # See: https://www.addthis.com
-  addThisId: #<Your addthis> 
-
-
-  # ---------------------------------------------------------------
-  # 站点统计功能
-  # Statistics and Analytics
-  # ---------------------------------------------------------------
-
-  analytics:
-    # 51La 站点统计
-    # 更多信息请参考：https://invite.51.la/1NUfGTS1?target=V6
-    # 51La Analytics
-    # See: https://invite.51.la/1NUfGTS1?target=V6 
-    laId: #<anaytics_id> 
-
-  # TODO
-  # Show Views / Visitors of the website / page with busuanzi.
-  # For more information: http://ibruce.info/2015/04/04/busuanzi/
-  busuanzi:
-    visitors: false
-    visitorsIcon: fa fa-user
-    views: false
-    viewsIcon: fa fa-eye
-    postViews: false
-    postViewsIcon: far fa-eye
-
-
-  # ---------------------------------------------------------------
-  # 内容搜索服务
-  # Search Services
-  # ---------------------------------------------------------------
-
-  # Algolia Search
-  # For more information: https://www.algolia.com
-  algoliaSearch:
-    enable: false
-    appId: #<algolia app id>
-    apiKey: #<algolia api key>
-    indexName: #<algolia index name>
-    hits:
-      perPage: 10
-
-  # 本地搜索
-  # Local Search
-  localSearch:
-    # 是否开启搜索功能
-    # Enable search function
-    enable: true
-    # 搜索索引文件路径
-    # Indexes file path for search
-    path: searchindexes.xml
-    # 是立即搜索当输入关键字时，可选值： auto | manual
-    # If auto, trigger search by changing input.
-    # If manual, trigger search by pressing enter key or search button.
-    trigger: auto
-    # 显示头部的搜索记录，-1 表示显示所有搜索结果
-    # Show top n results per article, show all results by setting to -1
-    topNPerArticle: -1
-    # 将 html 字符串转换为可读字符串
-    # Unescape html strings to the readable one.
-    unescape: false
-    # 页面加载时是否要重新载入索引文件
-    # Preload the search data when the page loads.
-    preload: false
-
-
-  # ---------------------------------------------------------------
-  # 在线聊天服务
-  # Chat Services
-  # ---------------------------------------------------------------
-
-  # A button to open designated chat widget in sidebar.
-  # Firstly, you need to enable and configure the chat service.
-  chat:
-    enable: false
-    icon: fa fa-comment # Icon name in Font Awesome, set false to disable icon.
-    text: Chat # Button text, change it as you wish.
-
-  # Gitter Support
-  # For more information: https://gitter.im
-  gitter:
-    enable: true
-    room: hugo-next/community
-
-
-  # ---------------------------------------------------------------
-  # TODO
-  # 标签设置（暂时未实现）
-  # Tags Settings
-  # ---------------------------------------------------------------
-
-  # Note tag (bootstrap callout)
-  note:
-    # Note tag style values:
-    #  - simple    bootstrap callout old alert style. Default.
-    #  - modern    bootstrap callout new (v2-v3) alert style.
-    #  - flat      flat callout style with background, like on Mozilla or StackOverflow.
-    #  - disabled  disable all CSS styles import of note tag.
-    style: simple
-    icons: false
-    # Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).
-    # Offset also applied to label tag variables. This option can work with disabled note tag.
-    lightBgOffset: 0
-
-  # Tabs tag
-  tabs:
-    # Make the nav bar of tabs with long content stick to the top.
-    sticky: false
-    transition:
-      tabs: false
-      labels: true
-
-  # PDF tag
-  # NexT will try to load pdf files natively, if failed, pdf.js will be used.
-  # So, you have to install the dependency of pdf.js if you want to use pdf tag and make it available to all browsers.
-  # Dependencies: https://github.com/next-theme/theme-next-pdf
-  pdf:
-    enable: false
-    # Default height
-    height: 500px
-
-  # Mermaid tag
-  mermaid:
-    enable: false
-    # Available themes: default | dark | forest | neutral
-    theme:
-      light: default
-      dark: dark
-
-
-  # ---------------------------------------------------------------
-  # 动画效果设置
-  # Animation Settings
-  # ---------------------------------------------------------------
-
-  # 通过 Animate.css 实现对整站的动画效果
-  # Use Animate.css to animate everything.
-  # For more information: https://animate.style
-  motion:
-    enable: true
-    async: true
-    transition:
-      # All available transition variants: https://theme-next.js.org/animate/
-      postBlock: fadeIn
-      postHeader: fadeInDown
-      postBody: fadeInDown
-      collHeader: fadeInLeft
-      # 侧边样效果 只有在 Pisces | Gemini 模式下才支持
-      # Only for Pisces | Gemini.
-      sidebar: fadeInUp
-
-  # TODO
-  # Progress bar in the top during page loading.
-  # For more information: https://github.com/CodeByZach/pace
-  pace:
-    enable: false
-    # All available colors:
-    # black | blue | green | orange | pink | purple | red | silver | white | yellow
-    color: blue
-    # All available themes:
-    # big-counter | bounce | barber-shop | center-atom | center-circle | center-radar | center-simple
-    # corner-indicator | fill-left | flat-top | flash | loading-bar | mac-osx | material | minimal
-    theme: minimal
-
-  # TODO
-  # Canvas ribbon
-  # For more information: https://github.com/hustcc/ribbon.js
-  canvasRibbon:
-    enable: false
-    size: 300 # The width of the ribbon
-    alpha: 0.6 # The transparency of the ribbon
-    zIndex: -1 # The display level of the ribbon
-
-
-  # ---------------------------------------------------------------
-  # CDN 服务（暂时只支持 unpkg 和 cndjs）
-  # CDN Settings
-  # ---------------------------------------------------------------
-
-  vendors:
-    # The CDN provider of NexT internal scripts.
-    # Available values: local | unpkg | cdnjs | custom
-    # Warning: If you are using the latest master branch of NexT, please set `internal: local`
-    internal: local
-    # The default CDN provider of third-party plugins.
-    # Available values: local | unpkg | cdnjs | custom
-    # Dependencies for `plugins: local`: https://github.com/next-theme/plugins
-    plugins: unpkg
-    # TODO
-    # Custom CDN URL
-    # For example:
-    # custom_cdn_url: https://cdn.jsdelivr.net/npm/${npm_name}@${version}/${minified}
-    # custom_cdn_url: https://cdnjs.cloudflare.com/ajax/libs/${cdnjs_name}/${version}/${cdnjs_file}
-    #custom_cdn_url:
-
-  # TODO
-  # Assets
-  # Accelerate delivery of static files using a CDN
-  # The js option is only valid when vendors.internal is local.
-  css: css
-  js: js
-  images: imgs
+    guessSyntax: true
+    # lineNos: true
+    style: monokai # 样式选择： monokai darcula
