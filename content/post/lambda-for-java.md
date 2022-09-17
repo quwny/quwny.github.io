@@ -1,28 +1,13 @@
 ---
-title: "Java中的Lambda表达式"
-date: 2022-04-30T16:22:44+08:00
-lastmod: 2022-04-30T16:22:44+08:00
+title: "Java 中的 Lambda 表达式"
+date: 2022-04-30
+lastmod: 2022-04-30
 author: ["Quwny"]
 categories: 
 - Java
 tags: 
 - Java
 - Lambda
-- 学习笔记
-description: "学习笔记：介绍 Java 中的 Lambda 表达式"
-weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
-slug: ""
-comments: true
-showToc: true # 显示目录
-TocOpen: false # 自动展开目录
-hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
-disableShare: true # 底部不显示分享栏
-showbreadcrumbs: true #顶部显示当前路径
-cover:
-    image: ""
-    caption: ""
-    alt: ""
-    relative: false
 draft: false
 ---
 
