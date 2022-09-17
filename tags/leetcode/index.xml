@@ -5,15 +5,17 @@
     <link>https://quwny.github.io/tags/leetcode/</link>
     <description>Recent content in LeetCode on QuwnyBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Thu, 28 Apr 2022 15:57:58 +0800</lastBuildDate><atom:link href="https://quwny.github.io/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 28 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://quwny.github.io/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LeetCode 每日一题</title>
-      <link>https://quwny.github.io/posts/tech/leetcode-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</link>
-      <pubDate>Thu, 28 Apr 2022 15:57:58 +0800</pubDate>
+      <link>https://quwny.github.io/posts/leetcode-daily/</link>
+      <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://quwny.github.io/posts/tech/leetcode-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</guid>
-      <description>LeetCode 每日一题</description>
+      <guid>https://quwny.github.io/posts/leetcode-daily/</guid>
+      <description>因为不是写题解的模式，感觉这样记录每日一题意义不大。停更！
+可以访问 我的力扣主页 查看题解。
+890. 查找和替换模式 tag: 字符串、模式匹配、中等
+/** * 解题思路：建立双向映射规则，单词与模式进行匹配。 * 单词只包含小写字母。 */ class Solution { public List&amp;lt;String&amp;gt; findAndReplacePattern(String[] words, String pattern) { List&amp;lt;String&amp;gt; res = new ArrayList&amp;lt;&amp;gt;(); // 存储结果 char[] pts = pattern.toCharArray(); // 转换为字符数组 // 保存映射规则 char[] rules1 = new char[26]; char[] rules2 = new char[26]; for (String word : words) { Arrays.fill(rules1, &amp;#39;\0&amp;#39;); Arrays.fill(rules2, &amp;#39;\0&amp;#39;); int n = word.length(); for (int i = 0; i &amp;lt; n; ++i) { char ch = word.</description>
     </item>
     
   </channel>

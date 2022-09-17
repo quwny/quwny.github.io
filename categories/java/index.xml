@@ -5,15 +5,20 @@
     <link>https://quwny.github.io/categories/java/</link>
     <description>Recent content in Java on QuwnyBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Sat, 30 Apr 2022 16:22:44 +0800</lastBuildDate><atom:link href="https://quwny.github.io/categories/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://quwny.github.io/categories/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Java中的Lambda表达式</title>
-      <link>https://quwny.github.io/posts/tech/java%E4%B8%AD%E7%9A%84lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
-      <pubDate>Sat, 30 Apr 2022 16:22:44 +0800</pubDate>
+      <title>Java 中的 Lambda 表达式</title>
+      <link>https://quwny.github.io/posts/lambda-for-java/</link>
+      <pubDate>Sat, 30 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://quwny.github.io/posts/tech/java%E4%B8%AD%E7%9A%84lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
-      <description>学习笔记：介绍 Java 中的 Lambda 表达式</description>
+      <guid>https://quwny.github.io/posts/lambda-for-java/</guid>
+      <description>参考视频：尚硅谷Java入门视频教程
+Lambda 简介 Java 8 中引入了一个新的操作符 -&amp;gt; ，该操作符称为 箭头操作符 或 Lambda 操作符。 箭头操作符将 Lambda 表达式拆分为两部分：( 参数列表 ) -&amp;gt; { Lambda 体 }
+Lambda 语法格式 语法格式一：无参数，无返回值：() -&amp;gt; {}
+() -&amp;gt; System.out.println(&amp;#34;hello Lambda!&amp;#34;); 语法格式二：有一个参数，无返回值（若只有一个参数，小括号可以省略不写）： (x) -&amp;gt; {}
+Consumer&amp;lt;String&amp;gt; consumer = (x) -&amp;gt; System.out.println(x); Consumer&amp;lt;String&amp;gt; consumer = x -&amp;gt; System.out.println(x); 语法格式三：有两个以上的参数，有返回值，并且 Lambda 体中有多条语句
+Comparator&amp;lt;Integer&amp;gt; comparator = (x, y) -&amp;gt; { System.out.println(&amp;#34;函数式接口&amp;#34;); return Integer.compare(x, y); }; 语法格式四：若 Lambda 体中只有一条语句，return 和 大括号都可以省略不写
+Comparator&amp;lt;Integer&amp;gt; comparator = (x, y) -&amp;gt; Integer.</description>
     </item>
     
   </channel>

@@ -5,53 +5,47 @@
     <link>https://quwny.github.io/</link>
     <description>Recent content on QuwnyBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Fri, 05 Aug 2022 22:21:58 +0800</lastBuildDate><atom:link href="https://quwny.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://quwny.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hugo_about</title>
-      <link>https://quwny.github.io/hugo_about/</link>
-      <pubDate>Fri, 05 Aug 2022 22:21:58 +0800</pubDate>
+      <title>关于使用 Hugo 搭建网站的一些事</title>
+      <link>https://quwny.github.io/posts/hugo-notes/</link>
+      <pubDate>Fri, 05 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://quwny.github.io/hugo_about/</guid>
-      <description>关于 Hugo 的一些内容</description>
+      <guid>https://quwny.github.io/posts/hugo-notes/</guid>
+      <description>Hugo 文档：中文版 英文版
+本地启动博客 在命令行中输入以下命令：
+hugo server -D 创建文件 方式一：直接创建在 content 目录下。格式如下：
+hugo new filename.md # 如果文件名有空格，需要使用 双引号（&amp;#34;&amp;#34;） 括起来。 hugo new &amp;#34;filename.md&amp;#34; 方式二：创建到指定的目录下（content 目录下的指定目录）。格式如下：
+hugo new posts/filename.md # 如果文件名有空格，需要使用 双引号（&amp;#34;&amp;#34;） 括起来。 hugo new &amp;#34;posts/filename.md&amp;#34; </description>
     </item>
     
     <item>
-      <title>Java中的Lambda表达式</title>
-      <link>https://quwny.github.io/posts/tech/java%E4%B8%AD%E7%9A%84lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
-      <pubDate>Sat, 30 Apr 2022 16:22:44 +0800</pubDate>
+      <title>Java 中的 Lambda 表达式</title>
+      <link>https://quwny.github.io/posts/lambda-for-java/</link>
+      <pubDate>Sat, 30 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://quwny.github.io/posts/tech/java%E4%B8%AD%E7%9A%84lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
-      <description>学习笔记：介绍 Java 中的 Lambda 表达式</description>
+      <guid>https://quwny.github.io/posts/lambda-for-java/</guid>
+      <description>参考视频：尚硅谷Java入门视频教程
+Lambda 简介 Java 8 中引入了一个新的操作符 -&amp;gt; ，该操作符称为 箭头操作符 或 Lambda 操作符。 箭头操作符将 Lambda 表达式拆分为两部分：( 参数列表 ) -&amp;gt; { Lambda 体 }
+Lambda 语法格式 语法格式一：无参数，无返回值：() -&amp;gt; {}
+() -&amp;gt; System.out.println(&amp;#34;hello Lambda!&amp;#34;); 语法格式二：有一个参数，无返回值（若只有一个参数，小括号可以省略不写）： (x) -&amp;gt; {}
+Consumer&amp;lt;String&amp;gt; consumer = (x) -&amp;gt; System.out.println(x); Consumer&amp;lt;String&amp;gt; consumer = x -&amp;gt; System.out.println(x); 语法格式三：有两个以上的参数，有返回值，并且 Lambda 体中有多条语句
+Comparator&amp;lt;Integer&amp;gt; comparator = (x, y) -&amp;gt; { System.out.println(&amp;#34;函数式接口&amp;#34;); return Integer.compare(x, y); }; 语法格式四：若 Lambda 体中只有一条语句，return 和 大括号都可以省略不写
+Comparator&amp;lt;Integer&amp;gt; comparator = (x, y) -&amp;gt; Integer.</description>
     </item>
     
     <item>
       <title>LeetCode 每日一题</title>
-      <link>https://quwny.github.io/posts/tech/leetcode-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</link>
-      <pubDate>Thu, 28 Apr 2022 15:57:58 +0800</pubDate>
+      <link>https://quwny.github.io/posts/leetcode-daily/</link>
+      <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://quwny.github.io/posts/tech/leetcode-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</guid>
-      <description>LeetCode 每日一题</description>
+      <guid>https://quwny.github.io/posts/leetcode-daily/</guid>
+      <description>因为不是写题解的模式，感觉这样记录每日一题意义不大。停更！
+可以访问 我的力扣主页 查看题解。
+890. 查找和替换模式 tag: 字符串、模式匹配、中等
+/** * 解题思路：建立双向映射规则，单词与模式进行匹配。 * 单词只包含小写字母。 */ class Solution { public List&amp;lt;String&amp;gt; findAndReplacePattern(String[] words, String pattern) { List&amp;lt;String&amp;gt; res = new ArrayList&amp;lt;&amp;gt;(); // 存储结果 char[] pts = pattern.toCharArray(); // 转换为字符数组 // 保存映射规则 char[] rules1 = new char[26]; char[] rules2 = new char[26]; for (String word : words) { Arrays.fill(rules1, &amp;#39;\0&amp;#39;); Arrays.fill(rules2, &amp;#39;\0&amp;#39;); int n = word.length(); for (int i = 0; i &amp;lt; n; ++i) { char ch = word.</description>
     </item>
     
-    <item>
-      <title>First Blog</title>
-      <link>https://quwny.github.io/posts/first-blog/</link>
-      <pubDate>Wed, 27 Apr 2022 16:12:13 +0800</pubDate>
-      
-      <guid>https://quwny.github.io/posts/first-blog/</guid>
-      <description>这是一篇文章</description>
-    </item>
-    
-    
-    <item>
-      <title>🙋🏻‍♂️关于我</title>
-      <link>https://quwny.github.io/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://quwny.github.io/about/</guid>
-      <description></description>
-    </item>
     
     
   </channel>

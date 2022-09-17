@@ -5,12 +5,11 @@
     <link>https://quwny.github.io/tags/</link>
     <description>Recent content in Tags on QuwnyBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <lastBuildDate>Fri, 05 Aug 2022 22:21:58 +0800</lastBuildDate><atom:link href="https://quwny.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://quwny.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo</title>
       <link>https://quwny.github.io/tags/hugo/</link>
-      <pubDate>Fri, 05 Aug 2022 22:21:58 +0800</pubDate>
+      <pubDate>Fri, 05 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://quwny.github.io/tags/hugo/</guid>
       <description></description>
@@ -19,7 +18,7 @@
     <item>
       <title>Java</title>
       <link>https://quwny.github.io/tags/java/</link>
-      <pubDate>Sat, 30 Apr 2022 16:22:44 +0800</pubDate>
+      <pubDate>Sat, 30 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://quwny.github.io/tags/java/</guid>
       <description></description>
@@ -28,25 +27,16 @@
     <item>
       <title>Lambda</title>
       <link>https://quwny.github.io/tags/lambda/</link>
-      <pubDate>Sat, 30 Apr 2022 16:22:44 +0800</pubDate>
+      <pubDate>Sat, 30 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://quwny.github.io/tags/lambda/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>学习笔记</title>
-      <link>https://quwny.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Sat, 30 Apr 2022 16:22:44 +0800</pubDate>
-      
-      <guid>https://quwny.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>LeetCode</title>
       <link>https://quwny.github.io/tags/leetcode/</link>
-      <pubDate>Thu, 28 Apr 2022 15:57:58 +0800</pubDate>
+      <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://quwny.github.io/tags/leetcode/</guid>
       <description></description>
