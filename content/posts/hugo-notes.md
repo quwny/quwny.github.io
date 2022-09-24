@@ -14,13 +14,13 @@ disableShare: true # 底部不显示分享栏
 showbreadcrumbs: true # 顶部显示当前路径
 ---
 
-**Hugo 文档：[中文版](https://www.gohugo.org/) [英文版](https://gohugo.io/)**
+**Hugo 文档：[英文版](https://gohugo.io/)**
 
 ## 本地启动博客
 
 在命令行中输入以下命令：
 
-```Shell
+```sh
 hugo server -D
 ```
 
@@ -28,7 +28,7 @@ hugo server -D
 
 方式一：直接创建在 `content` 目录下。格式如下：
 
-```Shell
+```sh
 hugo new filename.md
 # 如果文件名有空格，需要使用 双引号（""） 括起来。
 hugo new "filename.md"
@@ -36,7 +36,7 @@ hugo new "filename.md"
 
 方式二：创建到指定的目录下（content 目录下的指定目录）。格式如下：
 
-```Shell
+```sh
 hugo new posts/filename.md
 # 如果文件名有空格，需要使用 双引号（""） 括起来。
 hugo new "posts/filename.md"

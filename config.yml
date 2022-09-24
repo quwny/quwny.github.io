@@ -2,7 +2,6 @@ baseURL: https://quwny.github.io/  #绑定的域名
 title: QuwnyBlog # 站点名称
 paginate: 10 # 每页显示的文章数
 theme: PaperMod # 主题名字，和 themes 文件夹下的一致
-# languageCode: zh-cn # en-us
 
 enableInlineShortcodes: true #允许内联短码
 enableEmoji: true # 允许使用 Emoji 表情，建议 true
@@ -10,6 +9,13 @@ enableRobotsTXT: true # 允许爬虫抓取到搜索引擎，建议 true
 buildDrafts: false
 buildFuture: false
 buildExpired: false
+
+# 搜索设置
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # is necessary
 
 # googleAnalytics: UA-123-45
 
@@ -24,14 +30,13 @@ params:
   keywords: [Blog, Portfolio, PaperMod]
   author: Quwny
   # images: ["<link or path of image for opengraph, twitter-cards>"]
-  DateFormat: "January 2, 2006"
+  DateFormat: "2006-01-02" # 日期格式
   defaultTheme: auto # dark, light
   disableThemeToggle: false
-
   ShowReadingTime: true # 显示阅读时间
   ShowShareButtons: false # 显示分享按钮
-  ShowPostNavLinks: true 
-  ShowBreadCrumbs: true
+  ShowPostNavLinks: true # 显示上一篇/下一篇按钮
+  ShowBreadCrumbs: true # 展示导航栏
   ShowCodeCopyButtons: false
   ShowWordCount: true
   ShowRssButtonInSectionTermList: true
@@ -42,11 +47,11 @@ params:
   comments: false
   hidemeta: false
   hideSummary: false
-  showtoc: false
-  tocopen: false
+  showtoc: true # 显示目录
+  tocopen: false # 展开目录
 
   assets:
-    # disableHLJS: true # to disable highlight.js
+    disableHLJS: false # to disable highlight.js
     # disableFingerprinting: true
     favicon: "/favicon.ico"
     favicon16x16: "/favicon-16x16.png"
@@ -80,15 +85,16 @@ params:
   #   yandex:
   #     SiteVerificationTag: "XYZabc"
 
-  # cover:
-  #   hidden: true # hide everywhere but not in structured data
-  #   hiddenInList: true # hide on list pages and home
-  #   hiddenInSingle: true # hide on single page
+  cover:
+    responsiveImages: false
+    hidden: true # hide everywhere but not in structured data
+    hiddenInList: true # hide on list pages and home
+    hiddenInSingle: true # hide on single page
 
-  editPost:
-    URL: "https://github.com/qunwy/quwny.github.io/content"
-    Text: "Suggest Changes" # edit text
-    appendFilePath: true # to append file path to Edit link
+  # editPost:
+  #   URL: "https://github.com/qunwy/quwny.github.io/content"
+  #   Text: "编辑" # edit text
+  #   appendFilePath: true # to append file path to Edit link
 
   # for search
   # https://fusejs.io/api/options.html
@@ -99,7 +105,7 @@ params:
     distance: 1000
     threshold: 0.4
     minMatchCharLength: 0
-    keys: ["title", "permalink", "summary", "content"]
+    keys: ["title", "permalink", "summary"]
 menu:
   main:
     - identifier: search
