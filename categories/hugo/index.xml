@@ -12,7 +12,7 @@
       <pubDate>Fri, 05 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://quwny.github.io/posts/hugo-notes/</guid>
-      <description>Hugo 文档：中文版 英文版
+      <description>Hugo 文档：英文版
 本地启动博客 在命令行中输入以下命令：
 hugo server -D 创建文件 方式一：直接创建在 content 目录下。格式如下：
 hugo new filename.md # 如果文件名有空格，需要使用 双引号（&amp;#34;&amp;#34;） 括起来。 hugo new &amp;#34;filename.md&amp;#34; 方式二：创建到指定的目录下（content 目录下的指定目录）。格式如下：

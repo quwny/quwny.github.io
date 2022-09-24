@@ -12,11 +12,28 @@
       <pubDate>Fri, 05 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://quwny.github.io/posts/hugo-notes/</guid>
-      <description>Hugo 文档：中文版 英文版
+      <description>Hugo 文档：英文版
 本地启动博客 在命令行中输入以下命令：
 hugo server -D 创建文件 方式一：直接创建在 content 目录下。格式如下：
 hugo new filename.md # 如果文件名有空格，需要使用 双引号（&amp;#34;&amp;#34;） 括起来。 hugo new &amp;#34;filename.md&amp;#34; 方式二：创建到指定的目录下（content 目录下的指定目录）。格式如下：
 hugo new posts/filename.md # 如果文件名有空格，需要使用 双引号（&amp;#34;&amp;#34;） 括起来。 hugo new &amp;#34;posts/filename.md&amp;#34; </description>
+    </item>
+    
+    <item>
+      <title>最大公约数</title>
+      <link>https://quwny.github.io/posts/gcd/</link>
+      <pubDate>Fri, 05 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://quwny.github.io/posts/gcd/</guid>
+      <description>最大公约数（Greatest Common Divisor），也称最大公因数、最大公因子，指两个或多个整数共有约数中最大的一个。
+a, b 的最大公约数记为 (a, b) 。同样的，a, b, c 的最大公约数记为 (a, b, c)。
+求最大公约数有多种方法，常见的有质因数分解法、短除法、辗转相除法（欧几里德算法）、更相减损法。
+详细介绍可查看百度百科：最大公约数
+辗转相除法（欧几里德算法） 欧几里得算法又称辗转相除法，是指用于计算两个非负整数 a, b 的最大公约数。
+定理：两个整数的最大公约数 等于 其中较小的那个数和两数相除余数的最大公约数。
+计算公式 gcd(a,b) = gcd(b,a mod b)。
+代码实现
+// 辗转相除法 int gcd(int a, int b) { while (b != 0) { // 余数 int r = a % b; a = b; b = r; } return a; } // 辗转相除法 - 递归写法 int gcd(int a, int b) { return b == 0 ?</description>
     </item>
     
     <item>
