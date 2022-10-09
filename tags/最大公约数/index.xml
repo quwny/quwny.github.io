@@ -12,7 +12,7 @@
       <pubDate>Fri, 05 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://quwny.github.io/posts/gcd/</guid>
-      <description>最大公约数（Greatest Common Divisor），也称最大公因数、最大公因子，指两个或多个整数共有约数中最大的一个。
+      <description>最大公约数 最大公约数（Greatest Common Divisor），也称最大公因数、最大公因子，指两个或多个整数共有约数中最大的一个。
 a, b 的最大公约数记为 (a, b) 。同样的，a, b, c 的最大公约数记为 (a, b, c)。
 求最大公约数有多种方法，常见的有质因数分解法、短除法、辗转相除法（欧几里德算法）、更相减损法。
 详细介绍可查看百度百科：最大公约数
