@@ -80,3 +80,21 @@ vector<vector<T>> v(n, vector<T>(m, data)); // 构造 n 行 m 列的二维 vecto
 vector<vector<T>> v{}; // 初始化空的二维 vector
 vector<vector<T>> v{{}}; // 初始化空的二维 vector
 ```
+
+## 常用库函数
+
+### `<numeric>` 标头
+
+`std::iota` C++11 起，用从起始值开始连续递增的值填充一个范围。
+
+示例
+
+```C++
+vector<int> vals(n);
+iota(vals.begin(), vals.end(), 0);
+
+int nums[n];
+iota(nums, nums + n, -1);
+```
+
+详细定义：[iota(C++ 参考手册)](https://zh.cppreference.com/w/cpp/algorithm/iota)
