@@ -27,3 +27,5 @@ draft: true # 草稿
 什么是 Makefile
 
 有什么用？
+
+## 通用 Makefile 文件
