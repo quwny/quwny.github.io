@@ -8,10 +8,10 @@
     <lastBuildDate>Fri, 05 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://quwny.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>关于使用 Hugo 搭建网站的一些事</title>
-      <link>https://quwny.github.io/posts/hugo-notes/</link>
+      <link>https://quwny.github.io/posts/build_website/hugo-notes/</link>
       <pubDate>Fri, 05 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://quwny.github.io/posts/hugo-notes/</guid>
+      <guid>https://quwny.github.io/posts/build_website/hugo-notes/</guid>
       <description>Hugo 文档：英文版
 本地启动博客 在命令行中输入以下命令：
 hugo server -D 创建文件 方式一：直接创建在 content 目录下。格式如下：

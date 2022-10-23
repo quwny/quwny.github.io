@@ -5,13 +5,24 @@
     <link>https://quwny.github.io/posts/</link>
     <description>Recent content in Posts on QuwnyBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 05 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://quwny.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Oct 2022 19:29:11 +0800</lastBuildDate><atom:link href="https://quwny.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Matlab 笔记</title>
+      <link>https://quwny.github.io/posts/matlab/matlab-notes/</link>
+      <pubDate>Sun, 23 Oct 2022 19:29:11 +0800</pubDate>
+      
+      <guid>https://quwny.github.io/posts/matlab/matlab-notes/</guid>
+      <description>变量命名规则 字母、数字、下划线，不能以数字开头。
+Matlab 调用优先级 从高到底：
+变量 内建函数 子函数 私有函数 MEX 文件 P 文件 M 文件 Matlab 数据类型 逻辑 字符 数字 int8 int16 int32 int64 uint8 uint16 uint32 uint64 single 单精度浮点数 double 默认类型 cell 结构 Scalar @ 数字格式 format [short | long | shortE | longE | bank | hex | rat] format % 恢复默认格式 字符 和 字符串 Character(char) 0 ~ 255 ASCII 单字符 % string 字符串，使用单引号或者双引号 % 连接字符 s = [s1 s2]; s = [s1; s2]; % 需要维度（长度）相同 str = &amp;#39;aardvark&amp;#39;; &amp;#39;a&amp;#39; == str % 返回的是字符串中每个字符对应的结果 str(str == &amp;#39;a&amp;#39;) = &amp;#39;2&amp;#39; % 将对应逻辑值为 1 的位置赋值为 &amp;#39;2&amp;#39; 结构体 cell 向量 %% 向量 a = [1 2 3 4]; % 行向量 b = [1; 2; 3; 4]; % 列向量 a(i); % 取其中一个元素 a * b; % 内积：行向量×列向量 b * a; % 外积：列向量×行向量 矩阵 矩阵基本语法</description>
+    </item>
+    
     <item>
       <title>关于使用 Hugo 搭建网站的一些事</title>
-      <link>https://quwny.github.io/posts/hugo-notes/</link>
+      <link>https://quwny.github.io/posts/build_website/hugo-notes/</link>
       <pubDate>Fri, 05 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://quwny.github.io/posts/hugo-notes/</guid>
+      <guid>https://quwny.github.io/posts/build_website/hugo-notes/</guid>
       <description>Hugo 文档：英文版
 本地启动博客 在命令行中输入以下命令：
 hugo server -D 创建文件 方式一：直接创建在 content 目录下。格式如下：
@@ -21,10 +32,10 @@ hugo new posts/filename.md # 如果文件名有空格，需要使用 双引号�
     
     <item>
       <title>最大公约数</title>
-      <link>https://quwny.github.io/posts/gcd/</link>
+      <link>https://quwny.github.io/posts/alg_ds/gcd/</link>
       <pubDate>Fri, 05 Aug 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://quwny.github.io/posts/gcd/</guid>
+      <guid>https://quwny.github.io/posts/alg_ds/gcd/</guid>
       <description>最大公约数 最大公约数（Greatest Common Divisor），也称最大公因数、最大公因子，指两个或多个整数共有约数中最大的一个。
 a, b 的最大公约数记为 (a, b) 。同样的，a, b, c 的最大公约数记为 (a, b, c)。
 求最大公约数有多种方法，常见的有质因数分解法、短除法、辗转相除法（欧几里德算法）、更相减损法。
@@ -38,10 +49,10 @@ a, b 的最大公约数记为 (a, b) 。同样的，a, b, c 的最大公约数�
     
     <item>
       <title>Java 中的 Lambda 表达式</title>
-      <link>https://quwny.github.io/posts/lambda-for-java/</link>
+      <link>https://quwny.github.io/posts/java/lambda-for-java/</link>
       <pubDate>Sat, 30 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://quwny.github.io/posts/lambda-for-java/</guid>
+      <guid>https://quwny.github.io/posts/java/lambda-for-java/</guid>
       <description>参考视频：尚硅谷Java入门视频教程
 Lambda 简介 Java 8 中引入了一个新的操作符 -&amp;gt; ，该操作符称为 箭头操作符 或 Lambda 操作符。 箭头操作符将 Lambda 表达式拆分为两部分：( 参数列表 ) -&amp;gt; { Lambda 体 }
 Lambda 语法格式 语法格式一：无参数，无返回值：() -&amp;gt; {}
@@ -53,10 +64,10 @@ Comparator&amp;lt;Integer&amp;gt; comparator = (x, y) -&amp;gt; Integer.</descri
     
     <item>
       <title>LeetCode 每日一题</title>
-      <link>https://quwny.github.io/posts/leetcode-daily/</link>
+      <link>https://quwny.github.io/posts/alg_ds/leetcode-daily/</link>
       <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://quwny.github.io/posts/leetcode-daily/</guid>
+      <guid>https://quwny.github.io/posts/alg_ds/leetcode-daily/</guid>
       <description>因为不是写题解的模式，感觉这样记录每日一题意义不大。停更！
 可以访问 我的力扣主页 查看题解。
 890. 查找和替换模式 tag: 字符串、模式匹配、中等

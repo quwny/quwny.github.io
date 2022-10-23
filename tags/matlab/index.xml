@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Matlab on QuwnyBlog</title>
+    <link>https://quwny.github.io/tags/matlab/</link>
+    <description>Recent content in Matlab on QuwnyBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 23 Oct 2022 19:29:11 +0800</lastBuildDate><atom:link href="https://quwny.github.io/tags/matlab/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Matlab 笔记</title>
+      <link>https://quwny.github.io/posts/matlab/matlab-notes/</link>
+      <pubDate>Sun, 23 Oct 2022 19:29:11 +0800</pubDate>
+      
+      <guid>https://quwny.github.io/posts/matlab/matlab-notes/</guid>
+      <description>变量命名规则 字母、数字、下划线，不能以数字开头。
+Matlab 调用优先级 从高到底：
+变量 内建函数 子函数 私有函数 MEX 文件 P 文件 M 文件 Matlab 数据类型 逻辑 字符 数字 int8 int16 int32 int64 uint8 uint16 uint32 uint64 single 单精度浮点数 double 默认类型 cell 结构 Scalar @ 数字格式 format [short | long | shortE | longE | bank | hex | rat] format % 恢复默认格式 字符 和 字符串 Character(char) 0 ~ 255 ASCII 单字符 % string 字符串，使用单引号或者双引号 % 连接字符 s = [s1 s2]; s = [s1; s2]; % 需要维度（长度）相同 str = &amp;#39;aardvark&amp;#39;; &amp;#39;a&amp;#39; == str % 返回的是字符串中每个字符对应的结果 str(str == &amp;#39;a&amp;#39;) = &amp;#39;2&amp;#39; % 将对应逻辑值为 1 的位置赋值为 &amp;#39;2&amp;#39; 结构体 cell 向量 %% 向量 a = [1 2 3 4]; % 行向量 b = [1; 2; 3; 4]; % 列向量 a(i); % 取其中一个元素 a * b; % 内积：行向量×列向量 b * a; % 外积：列向量×行向量 矩阵 矩阵基本语法</description>
+    </item>
+    
+  </channel>
+</rss>
