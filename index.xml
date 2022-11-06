@@ -5,7 +5,18 @@
     <link>https://quwny.github.io/</link>
     <description>Recent content on QuwnyBlog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 23 Oct 2022 19:29:11 +0800</lastBuildDate><atom:link href="https://quwny.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Nov 2022 19:51:43 +0800</lastBuildDate><atom:link href="https://quwny.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java 笔记</title>
+      <link>https://quwny.github.io/posts/java/java-notes/</link>
+      <pubDate>Sun, 06 Nov 2022 19:51:43 +0800</pubDate>
+      
+      <guid>https://quwny.github.io/posts/java/java-notes/</guid>
+      <description>官方参考文档 Java 参考文档 在该页面中可以找到对应 Java 版本的文档。
+优先队列 Java 17 中的优先队列构造函数
+// 创建一个按照自然排序的队列（小根堆） PriorityQueue&amp;lt;Integer&amp;gt; pq = new PriorityQueue&amp;lt;Integer&amp;gt;(); // 自定义排序（eg: 从大到小，大根堆） PriorityQueue&amp;lt;Integer&amp;gt; pq = new PriorityQueue&amp;lt;Integer&amp;gt;((o1, o2) -&amp;gt; o2 - o1); </description>
+    </item>
+    
     <item>
       <title>Matlab 笔记</title>
       <link>https://quwny.github.io/posts/matlab/matlab-notes/</link>
