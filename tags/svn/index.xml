@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SVN on QuwnyBlog</title>
+    <link>https://quwny.github.io/tags/svn/</link>
+    <description>Recent content in SVN on QuwnyBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 09 Nov 2022 21:53:36 +0800</lastBuildDate><atom:link href="https://quwny.github.io/tags/svn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SVN 笔记</title>
+      <link>https://quwny.github.io/posts/svn/svn-notes/</link>
+      <pubDate>Wed, 09 Nov 2022 21:53:36 +0800</pubDate>
+      
+      <guid>https://quwny.github.io/posts/svn/svn-notes/</guid>
+      <description>SVN 简介 Apache Subversion 简称 SVN ，是一个版本控制器。
+相关概念 仓库（版本库）
+服务端操作 # 创建版本库 svnadmin create &amp;lt;版本库路径（绝对路径）&amp;gt; # 启动服务器 -- 默认占用 3690 端口 svnserve -d -r &amp;lt;版本库路径&amp;gt; # 注册 Windows 服务 -- 方便使用 # 多仓库配置 sc create &amp;lt;服务名&amp;gt; binpath= &amp;#34;&amp;lt;服务路径&amp;gt;\svnserve.exe --service -r &amp;lt;版本库路径&amp;gt;&amp;#34; start= auto depend= Tcpip 权限 配置路径：&amp;lt;版本库路径&amp;gt;\conf 中的文件 svnserve.conf 修改访问权限
+# write -- 可写，read -- 只读，none -- 无法访问。 # 匿名访问权限 anon-access = none # 可写。read -- 只读，none -- 无法访问 # 用户授权 autn-access = write # 指定保存用户信息（用户名和密码）的文件 password-db = passwd # 指定保存授权信息的文件 authz-db = authz 客户端操作 SVN 基本操作 # 检出 svn checkout &amp;lt;svn://服务器地址/仓库地址&amp;gt; svn checkout svn://localhost/rep # 本地 # 更新 svn update &amp;lt;文件名&amp;gt; # 添加 svn add &amp;lt;文件名&amp;gt; # 提交 svn commit -m &amp;#34;提交信息&amp;#34; &amp;lt;文件名&amp;gt; 历史记录 </description>
+    </item>
+    
+  </channel>
+</rss>
