@@ -12,9 +12,8 @@
       <pubDate>Sun, 06 Nov 2022 19:51:43 +0800</pubDate>
       
       <guid>https://quwny.github.io/posts/java/java-notes/</guid>
-      <description>官方参考文档 Java 参考文档 在该页面中可以找到对应 Java 版本的文档。
-优先队列 Java 17 中的优先队列构造函数
-// 创建一个按照自然排序的队列（小根堆） PriorityQueue&amp;lt;Integer&amp;gt; pq = new PriorityQueue&amp;lt;Integer&amp;gt;(); // 自定义排序（eg: 从大到小，大根堆） PriorityQueue&amp;lt;Integer&amp;gt; pq = new PriorityQueue&amp;lt;Integer&amp;gt;((o1, o2) -&amp;gt; o2 - o1); </description>
+      <description>官方参考文档 在 Java 参考文档 中可以找到对应 Java 版本的文档。
+字符数组 和 字符串 互相转化 字符串 转 字符数组 // 使用 String 提供的 toCharArray() 方法 String str = &amp;#34;Hello World!&amp;#34;; char[] chs = str.toCharArray(); // 或者遍历 字符串，依次将字符赋值到字符数组中 String str = &amp;#34;Hello World!&amp;#34;; int n = str.length(); char[] chs = new char[n]; for (int i = 0; i &amp;lt; n; ++i) { chs[i] = s.charAt(i); } 字符数组 转 字符串 // 使用 String 提供的构造函数，传递一个字符数组 char[] chs = new char[] {&amp;#39;H&amp;#39;, &amp;#39;e&amp;#39;, &amp;#39;l&amp;#39;, &amp;#39;l&amp;#39;, &amp;#39;o&amp;#39;, &amp;#39; &amp;#39;, &amp;#39;W&amp;#39;, &amp;#39;o&amp;#39;, &amp;#39;r&amp;#39;, &amp;#39;l&amp;#39;, &amp;#39;d&amp;#39;, &amp;#39;!</description>
     </item>
     
     <item>
