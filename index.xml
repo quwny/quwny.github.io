@@ -40,6 +40,18 @@ Matlab 调用优先级 从高到底：
     </item>
     
     <item>
+      <title>Make Makefile</title>
+      <link>https://quwny.github.io/posts/c_c&#43;&#43;/make-makefile/</link>
+      <pubDate>Sat, 24 Sep 2022 20:39:54 +0800</pubDate>
+      
+      <guid>https://quwny.github.io/posts/c_c&#43;&#43;/make-makefile/</guid>
+      <description>Make 什么是 Make
+Makefile 什么是 Makefile
+有什么用？
+通用 Makefile 文件 ############### Makefile Common ############### # C or C++ EXT = c # gcc or g++ CC = gcc # includes directory INCDIR = includes # sources directory SRCDIR = sources # target directory TARDIR = target # .o file directroy OBJDIR = $(TARDIR)/obj # .d file directory DEPDIR = $(TARDIR)/dep # exec filename EXEC = $(TARDIR)/main.exe # 预处理选项 CPPFLAGS += -I$(INCDIR) # link LDFLAGS += # 编译器选项 CFLAGS += -O -std=c11 -g -Wall SRCS = $(foreach dir, $(SRCDIR), $(wildcard $(dir)/*.</description>
+    </item>
+    
+    <item>
       <title>关于使用 Hugo 搭建网站的一些事</title>
       <link>https://quwny.github.io/posts/build_website/hugo-notes/</link>
       <pubDate>Fri, 05 Aug 2022 00:00:00 +0000</pubDate>
